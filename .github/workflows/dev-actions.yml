@@ -28,6 +28,6 @@ jobs:
       - name: Commit format changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Auto commit format
+          commit_message: "[BOT]: Auto format"
           branch: ${{ github.head_ref }}
       - run: npm run lint
