@@ -1,7 +1,11 @@
-FROM nginx
+FROM node
 
-COPY ./src/index.html /usr/share/nginx/html/
-RUN mkdir /usr/share/nginx/html/js
-COPY ./src/js/* /usr/share/nginx/html/js
+WORKDIR /app
 
-EXPOSE 80
+COPY . .
+
+RUN npm install
+
+EXPOSE 8000
+
+CMD ["npm", "run", "build"]

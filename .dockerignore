@@ -1,4 +1,10 @@
 .github
 node_module
 .gitignore
-package*
+nginx
+test
+prettier.config.js
+.eslintrc.json
+README.md 
+Dockerfile
+docker-compose.yml
