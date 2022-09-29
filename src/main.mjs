@@ -1,5 +1,5 @@
 /*-----------------------*/
-import './scss/main.scss'
+import "./scss/main.scss";
 /*-----------------------*/
 
 alert("test");
