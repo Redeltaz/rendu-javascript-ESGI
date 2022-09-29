@@ -14,7 +14,9 @@ export class CustomElement extends HTMLElement {
 
         shadow.appendChild(style);
 
-        shadow.getElementById("click-me").addEventListener("click", this.handleClick);
+        shadow
+            .getElementById("click-me")
+            .addEventListener("click", this.handleClick);
     }
 
     handleClick() {
