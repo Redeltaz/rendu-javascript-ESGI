@@ -8,7 +8,8 @@
         "lint": "eslint ./src/js",
         "format": "prettier --write ./src",
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "sass-build": "sass ./src/scss:./src/css"
     },
     "author": "",
     "license": "ISC",
