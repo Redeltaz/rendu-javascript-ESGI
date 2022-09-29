@@ -1,11 +1,5 @@
-/*-----------------------*/
+import { CustomElement } from "./components/CustomElement/CustomElement.mjs";
 import "./scss/main.scss";
-/*-----------------------*/
 
-alert("test");
-
-function test() {
-    console.log("test");
-}
-
-test();
+// Register custom elements here
+customElements.define("custom-element", CustomElement);

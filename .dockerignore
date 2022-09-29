@@ -3,9 +3,8 @@ node_module
 .gitignore
 nginx
 test
-prettier.config.js
+.prettierrc.json
 .eslintrc.json
-README.md 
+README.md
 Dockerfile
 docker-compose.yml
-src/css/
