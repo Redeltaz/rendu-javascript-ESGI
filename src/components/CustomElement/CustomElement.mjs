@@ -5,6 +5,8 @@ export class CustomElement extends HTMLElement {
     constructor() {
         super();
 
+        const content = this.innerHTML;
+
         // Create a shadow DOM
         let shadow = this.attachShadow({ mode: "open" });
         shadow.innerHTML = html;
@@ -14,12 +16,12 @@ export class CustomElement extends HTMLElement {
 
         shadow.appendChild(style);
 
-        shadow
-            .getElementById("click-me")
-            .addEventListener("click", this.handleClick);
+        const button = shadow.getElementById("click-me");
+        button.innerHTML = content;
+        button.addEventListener("click", this.handleClick);
     }
 
-    handleClick() {
-        alert("Hello World!");
+    handleClick = () => {
+        window.location = this.getAttribute("app");
     }
 }

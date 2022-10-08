@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    background-color: black;
+    color: white;
+    gap: 4px;
+    padding: 2px 5px;
+
+    .segment {
+        width: 33%;
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        &.right {
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        &.center {
+            justify-content: center;
+        }
+
+        &.left {
+            justify-content: flex-start;
+        }
+    }
+
+    .icon {
+        width: 10px;
+        height: 10px;
+    }
+
+    .battery {
+        display: flex;
+        gap: 4px;
+    }
+}
