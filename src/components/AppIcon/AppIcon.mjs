@@ -17,12 +17,12 @@ export class AppIcon extends HTMLElement {
 
         // Set icon
         const icons = {
-            calculator: calculatorIcon
-        }
+            calculator: calculatorIcon,
+        };
 
-        const icon = this.getAttribute("icon")
+        const icon = this.getAttribute("icon");
 
-        shadow.getElementById("test").innerHTML = icons[icon]
+        shadow.getElementById("test").innerHTML = icons[icon];
 
         // Handle click
         this.addEventListener("click", this.handleClick);

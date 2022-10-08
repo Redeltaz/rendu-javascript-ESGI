@@ -42,9 +42,9 @@ export class NarBar extends HTMLElement {
         this.refresh();
 
         // If device has no battery, remove icon
-        if(!navigator.getBattery) {
-            this.batteryIcon.style.display = 'none'
-            return
+        if (!navigator.getBattery) {
+            this.batteryIcon.style.display = "none";
+            return;
         }
 
         navigator.getBattery().then((battery) => {
