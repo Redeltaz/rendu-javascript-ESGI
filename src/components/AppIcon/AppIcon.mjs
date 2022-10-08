@@ -22,7 +22,7 @@ export class AppIcon extends HTMLElement {
 
         const icon = this.getAttribute("icon");
 
-        shadow.getElementById("test").innerHTML = icons[icon];
+        shadow.firstChild.innerHTML = icons[icon];
 
         // Handle click
         this.addEventListener("click", this.handleClick);

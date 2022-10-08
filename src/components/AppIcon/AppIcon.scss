@@ -1,9 +1,10 @@
-@import "/scss/main.scss";
+@import "/scss/abstracts/functions";
+@import "/scss/abstracts/variables";
 
 .app-icon {
     align-items: center;
     aspect-ratio: 1;
-    background-color: $neutral-white;
+    background-color: $white;
     border-radius: $sz-500;
     display: flex;
     height: $sz-700;

@@ -1,5 +1,5 @@
 // Colors
-$neutral-white: #fff;
+$white: #fff;
 $neutral-100: #fafafa;
 $neutral-200: #f5f5f5;
 $neutral-300: #e0e0e0;
@@ -9,7 +9,7 @@ $neutral-600: #757575;
 $neutral-700: #616161;
 $neutral-800: #424242;
 $neutral-900: #212121;
-$neutral-black: #000;
+$black: #000;
 
 // Font size
 $fs-100: rem(12);
@@ -23,15 +23,15 @@ $fs-800: rem(42);
 $fs-900: rem(46);
 
 // Font weight
-$thin: 100;
-$extra-light: 200;
-$light: 300;
-$regular: 400;
-$medium: 500;
-$semi-bold: 600;
-$bold: 700;
-$extra-bold: 800;
-$black: 900;
+$fw-thin: 100;
+$fw-extra-light: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+$fw-black: 900;
 
 // Sizing
 $sz-100: em(1);

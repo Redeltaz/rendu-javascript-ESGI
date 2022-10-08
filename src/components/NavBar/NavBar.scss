@@ -1,9 +1,10 @@
-@import "/scss/main.scss";
+@import "/scss/abstracts/functions";
+@import "/scss/abstracts/variables";
 
 .navbar {
     display: flex;
-    background-color: $neutral-black;
-    color: $neutral-white;
+    background-color: $black;
+    color: $white;
     padding: $sz-300 $sz-400;
     justify-content: space-between;
 
