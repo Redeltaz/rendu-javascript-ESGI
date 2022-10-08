@@ -23,5 +23,5 @@ export class CustomElement extends HTMLElement {
 
     handleClick = () => {
         window.location = this.getAttribute("app");
-    }
+    };
 }

@@ -2,15 +2,15 @@ import css from "./NavBar.scss";
 import html from "./NavBar.html?raw";
 
 // Icons
-import batteryEmptyIcon from "../../icons/battery.svg?raw"
-import batteryChargingIcon from "../../icons/battery-charging.svg?raw"
-import batteryFullIcon from "../../icons/battery-full.svg?raw"
-import batteryHalfIcon from "../../icons/battery-half.svg?raw"
-import reception0Icon from "../../icons/reception-0.svg?raw"
-import reception1Icon from "../../icons/reception-1.svg?raw"
-import reception2Icon from "../../icons/reception-2.svg?raw"
-import reception3Icon from "../../icons/reception-3.svg?raw"
-import reception4Icon from "../../icons/reception-4.svg?raw"
+import batteryEmptyIcon from "../../icons/battery.svg?raw";
+import batteryChargingIcon from "../../icons/battery-charging.svg?raw";
+import batteryFullIcon from "../../icons/battery-full.svg?raw";
+import batteryHalfIcon from "../../icons/battery-half.svg?raw";
+import reception0Icon from "../../icons/reception-0.svg?raw";
+import reception1Icon from "../../icons/reception-1.svg?raw";
+import reception2Icon from "../../icons/reception-2.svg?raw";
+import reception3Icon from "../../icons/reception-3.svg?raw";
+import reception4Icon from "../../icons/reception-4.svg?raw";
 
 export class NarBar extends HTMLElement {
     constructor() {
@@ -69,7 +69,7 @@ export class NarBar extends HTMLElement {
             this.batteryIcon.innerHTML = batteryEmptyIcon;
         }
 
-        this.battery.innerText = (battery.level * 100) + "%";
+        this.battery.innerText = battery.level * 100 + "%";
     }
 
     /**
@@ -100,11 +100,11 @@ export class NarBar extends HTMLElement {
 
         fetch("/")
             .then(() => {
-                this.updateNetworkIcon(new Date() - date)
+                this.updateNetworkIcon(new Date() - date);
             })
             .catch(() => {
                 this.ping.innerText = "";
-                this.updateNetworkIcon(null)
+                this.updateNetworkIcon(null);
             });
 
         this.time.innerText = this.formatter.format(date);
