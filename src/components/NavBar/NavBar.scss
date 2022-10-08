@@ -4,9 +4,9 @@
     color: white;
     gap: 4px;
     padding: 2px 5px;
+    white-space: nowrap;
 
     .segment {
-        width: 33%;
         display: flex;
         gap: 4px;
         align-items: center;
@@ -17,6 +17,7 @@
         }
 
         &.center {
+            flex-grow: 1;
             justify-content: center;
         }
 
@@ -26,12 +27,14 @@
     }
 
     .icon {
-        width: 10px;
-        height: 10px;
+        width: 16px;
+        height: 16px;
+        color: white;
     }
 
     .battery {
         display: flex;
         gap: 4px;
+        align-items: center;
     }
 }
