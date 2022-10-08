@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    background-color: black;
+    color: white;
+    gap: 4px;
+    padding: 2px 5px;
+    white-space: nowrap;
+
+    .segment {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        &.right {
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        &.center {
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        &.left {
+            justify-content: flex-start;
+        }
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+        color: white;
+    }
+
+    .battery {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
+}

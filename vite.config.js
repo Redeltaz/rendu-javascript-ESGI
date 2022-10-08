@@ -8,6 +8,12 @@ export default defineConfig({
         host: "0.0.0.0"
     },
     build: {
-        outDir: resolve("dist")
+        outDir: resolve("dist"),
+        rollupOptions: {
+            input: {
+                index: resolve(__dirname, "src/index.html"),
+                test: resolve(__dirname, "src/settings.html")
+            }
+        }
     }
 })
