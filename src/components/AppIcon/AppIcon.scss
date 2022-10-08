@@ -1,0 +1,23 @@
+@import "/scss/main.scss";
+
+.app-icon {
+    align-items: center;
+    aspect-ratio: 1;
+    background-color: $neutral-white;
+    border-radius: $sz-500;
+    display: flex;
+    height: $sz-700;
+    justify-content: center;
+    padding: $sz-500;
+    transition: 0.125s background-color ease-out;
+
+    &:hover {
+        background-color: $neutral-300;
+        cursor: pointer;
+    }
+
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+}

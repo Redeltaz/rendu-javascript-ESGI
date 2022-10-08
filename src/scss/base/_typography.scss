@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: $fs-100;
+    font-weight: $light;
+    line-height: 1;
+}
+
+@include bp("sm") {
+    body {
+        font-size: $fs-200;
+    }
+}
+
+@include bp("md") {
+    body {
+        font-size: $fs-300;
+    }
+}
+
+@include bp("lg") {
+    body {
+        font-size: $fs-400;
+    }
+}

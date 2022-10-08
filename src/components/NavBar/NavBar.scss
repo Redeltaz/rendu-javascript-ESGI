@@ -1,40 +1,39 @@
+@import "/scss/main.scss";
+
 .navbar {
     display: flex;
-    background-color: black;
-    color: white;
-    gap: 4px;
-    padding: 2px 5px;
-    white-space: nowrap;
+    background-color: $neutral-black;
+    color: $neutral-white;
+    padding: $sz-300 $sz-400;
+    justify-content: space-between;
 
     .segment {
         display: flex;
-        gap: 4px;
+        gap: $sz-300;
         align-items: center;
+        flex: 1;
 
         &.right {
             justify-content: flex-end;
-            align-items: center;
         }
 
         &.center {
-            flex-grow: 1;
             justify-content: center;
-        }
-
-        &.left {
-            justify-content: flex-start;
         }
     }
 
     .icon {
-        width: 16px;
-        height: 16px;
-        color: white;
+        align-items: center;
+        display: flex;
     }
 
     .battery {
         display: flex;
-        gap: 4px;
-        align-items: center;
+        gap: $sz-300;
+
+        .text {
+            align-items: center;
+            display: flex;
+        }
     }
 }
