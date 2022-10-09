@@ -1,15 +1,12 @@
-@import "variables/colors";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-* {
-    box-sizing: border-box;
-}
+@import "base/reset";
+@import "base/typography";
+
+@import "pages/home";
 
 html {
-    font-size: 12px;
     background-color: lightblue;
-    font-family: sans-serif;
-}
-
-body {
-    margin: 0;
 }
