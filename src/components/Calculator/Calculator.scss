@@ -1,0 +1,57 @@
+@use "/scss/components" as *;
+
+.calculator {
+    display: grid;
+    gap: $sz-300;
+
+    &__display {
+        background-color: $white;
+        text-align: right;
+    }
+
+    &__keys {
+        display: grid;
+        gap: $sz-300;
+        grid-auto-columns: 1fr;
+        grid-template-areas:
+            "actions actions actions operations"
+            "digits digits digits operations"
+            "digits digits digits operations"
+            "digits digits digits operations"
+            "digits digits digits operations";
+
+        > * {
+            display: grid;
+            gap: $sz-300;
+        }
+    }
+
+    &__key {
+        align-items: center;
+        background-color: $white;
+        aspect-ratio: 2;
+        display: flex;
+        justify-content: center;
+        transition: 0.125s background-color ease-out;
+
+        &:hover {
+            background-color: rgb($white, 0.625);
+            cursor: pointer;
+        }
+    }
+
+    &__actions {
+        grid-area: actions;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__digits {
+        grid-auto-rows: 1fr;
+        grid-area: digits;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__operations {
+        grid-area: operations;
+    }
+}
