@@ -1,5 +1,4 @@
-@import "/scss/abstracts/functions";
-@import "/scss/abstracts/variables";
+@use "/scss/components" as *;
 
 .app-icon {
     align-items: center;
@@ -13,7 +12,7 @@
     transition: 0.125s background-color ease-out;
 
     &:hover {
-        background-color: $neutral-300;
+        background-color: rgb($white, 0.625);
         cursor: pointer;
     }
 

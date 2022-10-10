@@ -1,0 +1,35 @@
+@use "/scss/components" as *;
+
+.container {
+    padding: $sz-400;
+}
+
+@include bp("sm") {
+    .container {
+        padding: $sz-500;
+    }
+}
+
+@include bp("md") {
+    .container {
+        padding: $sz-600;
+    }
+}
+
+@include bp("lg") {
+    .container {
+        padding-inline: $sz-700;
+    }
+}
+
+@include bp("xl") {
+    .container {
+        padding-inline: $sz-800;
+    }
+}
+
+@include bp("2xl") {
+    .container {
+        padding-inline: $sz-900;
+    }
+}

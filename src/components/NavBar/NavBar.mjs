@@ -12,7 +12,7 @@ import reception2Icon from "../../icons/reception-2.svg?raw";
 import reception3Icon from "../../icons/reception-3.svg?raw";
 import reception4Icon from "../../icons/reception-4.svg?raw";
 
-export class NarBar extends HTMLElement {
+export class NavBar extends HTMLElement {
     constructor() {
         super();
 
