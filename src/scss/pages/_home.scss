@@ -1,0 +1,21 @@
+@use "/scss/abstracts" as *;
+
+#home-page {
+    .main {
+        display: grid;
+        row-gap: $sz-600;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: space-between;
+
+        > * {
+            margin-inline: auto;
+            width: fit-content;
+        }
+    }
+
+    @include bp("md") {
+        .main {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+}

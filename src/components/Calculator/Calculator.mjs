@@ -60,6 +60,8 @@ export class Calculator extends HTMLElement {
     }
 
     reset = () => {
+        this.vibrate();
+
         this.memory.numbers[1] = "";
         this.result.innerText = "";
 
@@ -78,6 +80,8 @@ export class Calculator extends HTMLElement {
     };
 
     resetAll = () => {
+        this.vibrate();
+
         this.result.innerText = "";
         this.subResult.innerText = "";
 
@@ -85,6 +89,8 @@ export class Calculator extends HTMLElement {
     };
 
     addDigit = (e, isPoint) => {
+        this.vibrate();
+
         const char = isPoint ? "." : e.target.id;
 
         if (isPoint && this.result.innerText.includes(".")) {
@@ -110,6 +116,8 @@ export class Calculator extends HTMLElement {
     };
 
     changeSign = () => {
+        this.vibrate();
+
         const newNumber = parseFloat(this.result.innerText) * -1;
 
         this.result.innerText = newNumber;
@@ -120,6 +128,8 @@ export class Calculator extends HTMLElement {
     };
 
     operate = (operation) => {
+        this.vibrate();
+
         // Set operation numbers
         this.memory.numbers[0] = this.result.innerText;
         this.memory.numbers[1] = "";
@@ -147,6 +157,8 @@ export class Calculator extends HTMLElement {
     };
 
     submit = () => {
+        this.vibrate();
+
         const firstNumber = parseFloat(this.memory.numbers[0]);
         const secondNumber = parseFloat(this.memory.numbers[1]);
         const operation = this.memory.operation;
@@ -174,5 +186,9 @@ export class Calculator extends HTMLElement {
         this.subResult.innerText = `${firstNumber} ${this.getOperationChar(
             operation
         )} ${secondNumber}`;
+    };
+
+    vibrate = () => {
+        window.navigator.vibrate(100);
     };
 }

@@ -1,5 +1,4 @@
-@import "/scss/abstracts/functions";
-@import "/scss/abstracts/variables";
+@use "/scss/components" as *;
 
 .navbar {
     display: flex;
