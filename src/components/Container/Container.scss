@@ -1,35 +1,26 @@
 @use "/scss/components" as *;
 
 .container {
-    padding: $sz-400;
-}
+    margin-inline: auto;
+    padding: $sz-600;
 
-@include bp("sm") {
-    .container {
-        padding: $sz-500;
+    @include bp("sm") {
+        padding-block: $sz-700;
     }
-}
 
-@include bp("md") {
-    .container {
-        padding: $sz-600;
+    @include bp("md") {
+        padding-block: $sz-800;
     }
-}
 
-@include bp("lg") {
-    .container {
-        padding-inline: $sz-700;
+    @include bp("lg") {
+        max-width: 640px;
     }
-}
 
-@include bp("xl") {
-    .container {
-        padding-inline: $sz-800;
+    @include bp("xl") {
+        max-width: 768px;
     }
-}
 
-@include bp("2xl") {
-    .container {
-        padding-inline: $sz-900;
+    @include bp("2xl") {
+        max-width: 1024px;
     }
 }

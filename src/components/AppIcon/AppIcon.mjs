@@ -1,6 +1,7 @@
 import css from "./AppIcon.scss";
 import html from "./AppIcon.html?raw";
 import calculatorIcon from "../../icons/calculator.svg?raw";
+import gearIcon from "../../icons/gear.svg?raw";
 
 export class AppIcon extends HTMLElement {
     constructor() {
@@ -18,6 +19,7 @@ export class AppIcon extends HTMLElement {
         // Set icon
         const icons = {
             calculator: calculatorIcon,
+            gear: gearIcon,
         };
 
         const icon = this.getAttribute("icon");

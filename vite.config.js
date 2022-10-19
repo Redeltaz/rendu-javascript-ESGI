@@ -1,19 +1,20 @@
-import { resolve } from "path"
-import { defineConfig } from "vite"
+import { resolve } from "path";
+import { defineConfig } from "vite";
 
 export default defineConfig({
     root: resolve("src"),
     server: {
         port: 8000,
-        host: "0.0.0.0"
+        host: "0.0.0.0",
     },
     build: {
         outDir: resolve("dist"),
         rollupOptions: {
             input: {
                 index: resolve(__dirname, "src/index.html"),
-                test: resolve(__dirname, "src/settings.html")
-            }
-        }
-    }
-})
+                settings: resolve(__dirname, "src/settings.html"),
+                calculator: resolve(__dirname, "src/calculator.html"),
+            },
+        },
+    },
+});
