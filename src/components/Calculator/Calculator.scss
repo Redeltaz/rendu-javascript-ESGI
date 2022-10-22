@@ -2,11 +2,19 @@
 
 .calculator {
     display: grid;
+    font-weight: $fw-regular;
     gap: $sz-300;
 
     &__display {
+        align-items: flex-end;
         background-color: $white;
-        text-align: right;
+        border-radius: $sz-300;
+        display: flex;
+        flex-direction: column;
+        gap: $sz-300;
+        height: $sz-700;
+        justify-content: center;
+        padding-inline: $sz-500;
     }
 
     &__keys {
@@ -19,6 +27,7 @@
             "digits digits digits operations"
             "digits digits digits operations"
             "digits digits digits operations";
+        user-select: none;
 
         > * {
             display: grid;
@@ -29,14 +38,16 @@
     &__key {
         align-items: center;
         background-color: $white;
+        border-radius: $sz-300;
         aspect-ratio: 2;
         display: flex;
         justify-content: center;
-        transition: 0.125s background-color ease-out;
+        transition: 0.05s background-color ease-out;
 
         &:hover {
-            background-color: rgb($white, 0.625);
+            background-color: $neutral-100;
             cursor: pointer;
+            transition: none;
         }
     }
 

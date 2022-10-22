@@ -1,4 +1,4 @@
-@use "/scss/components" as *;
+@use "/scss/abstracts" as *;
 
 .navbar {
     display: flex;
@@ -9,7 +9,7 @@
 
     .segment {
         display: flex;
-        gap: $sz-400;
+        gap: $sz-300;
         align-items: center;
         flex: 1;
 
@@ -22,16 +22,9 @@
         }
     }
 
-    svg {
-        height: 100%;
-        width: auto;
-    }
-
     .icon {
         align-items: center;
-        aspect-ratio: 1;
         display: flex;
-        height: 100%;
     }
 
     .battery {
@@ -41,6 +34,13 @@
         .text {
             align-items: center;
             display: flex;
+        }
+    }
+
+    @include bp("md") {
+        .icon {
+            height: $sz-500;
+            width: $sz-500;
         }
     }
 }
