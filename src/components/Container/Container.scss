@@ -2,25 +2,24 @@
 
 .container {
     margin-inline: auto;
-    padding: $sz-600;
+    padding: $sz-600 $sz-500;
 
     @include bp("sm") {
-        padding-block: $sz-700;
-    }
-
-    @include bp("md") {
-        padding-block: $sz-800;
+        margin-top: $sz-300;
     }
 
     @include bp("lg") {
+        margin-top: $sz-400;
         max-width: 640px;
     }
 
     @include bp("xl") {
+        margin-top: $sz-500;
         max-width: 768px;
     }
 
     @include bp("2xl") {
+        margin-top: $sz-600;
         max-width: 1024px;
     }
 }

@@ -9,7 +9,7 @@
 
     .segment {
         display: flex;
-        gap: $sz-300;
+        gap: $sz-400;
         align-items: center;
         flex: 1;
 
@@ -22,9 +22,16 @@
         }
     }
 
+    svg {
+        height: 100%;
+        width: auto;
+    }
+
     .icon {
         align-items: center;
+        aspect-ratio: 1;
         display: flex;
+        height: 100%;
     }
 
     .battery {

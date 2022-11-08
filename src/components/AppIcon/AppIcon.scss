@@ -9,11 +9,14 @@
     height: $sz-800;
     justify-content: center;
     padding: $sz-600;
-    transition: 0.125s background-color ease-out;
+    transition-duration: 0.125s;
+    transition-property: background-color, scale;
+    transition-timing-function: ease-out;
 
     &:hover {
-        background-color: rgb($white, 0.625);
+        background-color: $neutral-200;
         cursor: pointer;
+        scale: 1.25;
     }
 
     svg {
