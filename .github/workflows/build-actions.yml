@@ -2,12 +2,12 @@ name: Build Check
 
 on:
   push:
-    branches: [feat-add-ci]
+    branches: [main]
   pull_request:
-    branches: [feat-add-ci]
+    branches: [main]
 
 jobs:
-  dev-check:
+  build-check:
 
     runs-on: ubuntu-latest
 
