@@ -22,7 +22,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: git fetch --no-tags --prune --depth=5 origin main
-      - run: npm ci
-      - run: npm run build
-      - run: test -e dist/index.html
+
+      - name: Fetch last content
+        run: git fetch --no-tags --prune --depth=5 origin main
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Launch build
+        run: npm run build
+
+      - name: Test if build is not empty
+        run: test -e dist/index.html
