@@ -1,4 +1,4 @@
-name: Dev Check
+name: Build Check
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  dev-check:
+  build-check:
 
     runs-on: ubuntu-latest
 
@@ -29,11 +29,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Launch linting
-        run: if ! npm run lint ; then npm run format; fi
+      - name: Launch build
+        run: npm run build
 
-      - name: Create format commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "[BOT]: Auto format"
-          branch: ${{ github.head_ref }}
+      - name: Test if build is not empty
+        run: test -e dist/index.html
