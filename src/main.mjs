@@ -10,6 +10,7 @@ import { HomeButton } from "./components/HomeButton/HomeButton.mjs";
 import { NavBar } from "./components/NavBar/NavBar.mjs";
 import { StopwatchComponent } from "./components/Clock/StopwatchComponent/StopwatchComponent.mjs";
 import { TimerComponent } from "./components/Clock/TimerComponent/TimerComponent.mjs";
+import { SettingsToggle } from "./components/Settings/SettingsToggle.mjs";
 
 // Register custom elements here
 customElements.define("app-icon", AppIcon);
@@ -22,3 +23,4 @@ customElements.define("custom-clock-component", ClockComponent);
 customElements.define("custom-stopwatch-component", StopwatchComponent);
 customElements.define("custom-timer-component", TimerComponent);
 customElements.define("nav-bar", NavBar);
+customElements.define("settings-toggle", SettingsToggle);

@@ -11,6 +11,7 @@ import reception1Icon from "../../icons/reception-1.svg?raw";
 import reception2Icon from "../../icons/reception-2.svg?raw";
 import reception3Icon from "../../icons/reception-3.svg?raw";
 import reception4Icon from "../../icons/reception-4.svg?raw";
+import Config from "../Settings/Configuration.mjs";
 
 export class NavBar extends HTMLElement {
     constructor() {
@@ -25,39 +26,75 @@ export class NavBar extends HTMLElement {
 
         shadow.appendChild(style);
 
-        this.battery = shadow.getElementById("battery");
-        this.batteryIcon = shadow.getElementById("battery-icon");
-        this.time = shadow.getElementById("time");
-        this.ping = shadow.getElementById("ping");
-        this.pingIcon = shadow.getElementById("ping-icon");
+        if (Config.showBattery) {
+            this.battery = shadow.getElementById("battery");
+            this.batteryIcon = shadow.getElementById("battery-icon");
 
-        this.formatter = new Intl.DateTimeFormat(navigator.language, {
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-        });
+            // If device has no battery, remove icon
+            if (!navigator.getBattery) {
+                this.batteryIcon.style.display = "none";
+                return;
+            }
 
-        this.interval = setInterval(this.refresh, 2000);
-        this.refresh();
+            navigator.getBattery().then((battery) => {
+                this.updateBatteryIcon(battery);
 
-        // If device has no battery, remove icon
-        if (!navigator.getBattery) {
-            this.batteryIcon.style.display = "none";
-            return;
+                battery.addEventListener("chargingchange", () => {
+                    this.updateBatteryIcon(battery);
+                });
+
+                battery.addEventListener("levelchange", () => {
+                    this.updateBatteryIcon(battery);
+                });
+            });
         }
 
-        navigator.getBattery().then((battery) => {
-            this.updateBatteryIcon(battery);
+        if (Config.showNetworkLatency) {
+            this.ping = shadow.getElementById("ping");
+            this.pingIcon = shadow.getElementById("ping-icon");
 
-            battery.addEventListener("chargingchange", () => {
-                this.updateBatteryIcon(battery);
-            });
+            setInterval(this.refreshPing, Config.pingRefreshRate);
+            this.refreshPing();
+        }
 
-            battery.addEventListener("levelchange", () => {
-                this.updateBatteryIcon(battery);
-            });
-        });
+        this.time = shadow.getElementById("time");
+        this.updateFormatter();
+
+        setInterval(this.refreshTime, 1000);
+        this.refreshTime();
+    }
+
+    updateFormatter() {
+        /**
+         * @type {DateTimeFormatOptions}
+         */
+        const options = {};
+
+        if (Config.showHour) {
+            options.hour = "numeric";
+        }
+
+        if (Config.showMinutes) {
+            options.minute = "numeric";
+        }
+
+        if (Config.showSeconds) {
+            options.second = "numeric";
+        }
+
+        if (Config.showDay) {
+            options.day = "numeric";
+        }
+
+        if (Config.showMonth) {
+            options.month = "short";
+        }
+
+        if (Config.showYear) {
+            options.year = "numeric";
+        }
+
+        this.formatter = new Intl.DateTimeFormat(navigator.language, options);
     }
 
     /**
@@ -101,10 +138,10 @@ export class NavBar extends HTMLElement {
     }
 
     // Use an arrow function to keep the context to NavBar instance
-    refresh = () => {
+    refreshPing = () => {
         const date = new Date();
 
-        fetch("/")
+        fetch(Config.pingServerAddress)
             .then(() => {
                 this.updateNetworkIcon(new Date() - date);
             })
@@ -112,7 +149,11 @@ export class NavBar extends HTMLElement {
                 this.ping.innerText = "";
                 this.updateNetworkIcon(null);
             });
+    };
+
+    refreshTime = () => {
+        const date = new Date();
 
         this.time.innerText = this.formatter.format(date);
-    };
+    }
 }
