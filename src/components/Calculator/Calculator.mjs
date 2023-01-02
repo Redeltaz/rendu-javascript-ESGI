@@ -29,7 +29,7 @@ export class Calculator extends HTMLElement {
         this.equalsButton = shadow.getElementById("equals");
 
         // Handle digits click
-        const keys = shadow.querySelectorAll(".calculator__key");
+        const keys = shadow.querySelectorAll(".calculator__digits .calculator__key");
 
         for (let key of keys) {
             if (/^\d+$/.test(key.id)) {
@@ -45,15 +45,9 @@ export class Calculator extends HTMLElement {
         this.plusButton.addEventListener("click", () => this.operate("add"));
         this.equalsButton.addEventListener("click", this.submit);
 
-        this.divideButton.addEventListener("click", () =>
-            this.operate("divide")
-        );
-        this.multiplyButton.addEventListener("click", () =>
-            this.operate("multiply")
-        );
-        this.minusButton.addEventListener("click", () =>
-            this.operate("substract")
-        );
+        this.divideButton.addEventListener("click", () => this.operate("divide"));
+        this.multiplyButton.addEventListener("click", () => this.operate("multiply"));
+        this.minusButton.addEventListener("click", () => this.operate("substract"));
 
         // Initialize
         this.resetAll();
@@ -64,16 +58,10 @@ export class Calculator extends HTMLElement {
 
         this.memory.numbers[1] = "";
         this.result.innerText = "";
-
-        // Clear results if equals has just been clicked
-        if (!this.memory.cleared) {
-            this.resetAll();
-        }
     };
 
     resetMemory = () => {
         this.memory = {
-            cleared: true,
             numbers: ["", ""],
             operation: null,
         };
@@ -92,14 +80,11 @@ export class Calculator extends HTMLElement {
         this.vibrate();
 
         const char = isPoint ? "." : e.target.id;
+        const isAction = e.target.id === "reset" || e.target.id === "reset-all" || e.target.id === "back";
 
-        if (isPoint && this.result.innerText.includes(".")) {
+        // Do nothing
+        if ((isPoint && this.result.innerText.includes(".")) || isAction) {
             return;
-        }
-
-        // Clear results if equals has just been clicked
-        if (!this.memory.cleared) {
-            this.resetAll();
         }
 
         // Replace result if an operator has just been clicked
@@ -118,17 +103,31 @@ export class Calculator extends HTMLElement {
     changeSign = () => {
         this.vibrate();
 
+        if (this.result.innerText === "") {
+            return;
+        }
+
         const newNumber = parseFloat(this.result.innerText) * -1;
 
         this.result.innerText = newNumber;
 
-        if (this.memory.operation && this.memory.numbers[1] === "") {
+        if (this.memory.numbers[1] === "") {
+            this.memory.numbers[0] = newNumber;
+        } else {
             this.memory.numbers[1] = newNumber;
         }
     };
 
     operate = (operation) => {
         this.vibrate();
+
+        if (this.result.innerText === "") {
+            return;
+        }
+
+        if (this.memory.operation !== null) {
+            this.submit();
+        }
 
         // Set operation numbers
         this.memory.numbers[0] = this.result.innerText;
@@ -138,11 +137,10 @@ export class Calculator extends HTMLElement {
         this.memory.operation = operation;
 
         // Set sub result text
-        this.subResult.innerText = `${
-            this.result.innerText
-        } ${this.getOperationChar(operation)}`;
+        this.subResult.innerText = `${this.result.innerText} ${this.getOperationChar(operation)}`;
 
-        this.memory.cleared = true;
+        // Set result text
+        this.result.innerText = "";
     };
 
     getOperationChar = (operation) => {
@@ -158,6 +156,10 @@ export class Calculator extends HTMLElement {
 
     submit = () => {
         this.vibrate();
+
+        if (this.memory.operation !== null && this.memory.numbers[1] === "") {
+            return;
+        }
 
         const firstNumber = parseFloat(this.memory.numbers[0]);
         const secondNumber = parseFloat(this.memory.numbers[1]);
@@ -179,13 +181,10 @@ export class Calculator extends HTMLElement {
             result = firstNumber + secondNumber;
         }
 
-        this.memory.cleared = false;
         this.memory.numbers[0] = result;
         this.result.innerText = result;
 
-        this.subResult.innerText = `${firstNumber} ${this.getOperationChar(
-            operation
-        )} ${secondNumber}`;
+        this.subResult.innerText = `${firstNumber} ${this.getOperationChar(operation)} ${secondNumber}`;
     };
 
     vibrate = () => {

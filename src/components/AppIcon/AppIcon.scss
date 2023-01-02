@@ -4,11 +4,11 @@
     align-items: center;
     aspect-ratio: 1;
     background-color: $white;
-    border-radius: 20%;
+    border-radius: $sz-400;
     display: flex;
     height: $sz-800;
     justify-content: center;
-    padding: $sz-600;
+    padding: $sz-400;
     transition-duration: 0.125s;
     transition-property: background-color, scale;
     transition-timing-function: ease-out;
@@ -16,7 +16,7 @@
     &:hover {
         background-color: $neutral-200;
         cursor: pointer;
-        scale: 1.25;
+        scale: 1.125;
     }
 
     svg {
@@ -25,7 +25,7 @@
     }
 
     @include bp("sm") {
-        height: $sz-700;
+        height: $sz-900;
         padding: $sz-500;
     }
 }

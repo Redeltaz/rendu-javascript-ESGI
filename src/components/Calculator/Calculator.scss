@@ -3,23 +3,24 @@
 .calculator {
     display: grid;
     font-weight: $fw-regular;
-    gap: $sz-300;
+    gap: $sz-400;
+    margin-inline: auto;
 
     &__display {
         align-items: flex-end;
         background-color: $white;
-        border-radius: $sz-300;
+        border-radius: $sz-400;
         display: flex;
         flex-direction: column;
-        gap: $sz-300;
-        height: $sz-700;
+        gap: $sz-400;
+        height: $sz-900;
         justify-content: center;
         padding-inline: $sz-500;
     }
 
     &__keys {
         display: grid;
-        gap: $sz-300;
+        gap: $sz-400;
         grid-auto-columns: 1fr;
         grid-template-areas:
             "actions actions actions operations"
@@ -31,15 +32,15 @@
 
         > * {
             display: grid;
-            gap: $sz-300;
+            gap: $sz-400;
         }
     }
 
     &__key {
         align-items: center;
         background-color: $white;
-        border-radius: $sz-300;
-        aspect-ratio: 2;
+        border-radius: $sz-400;
+        aspect-ratio: 1.5;
         display: flex;
         justify-content: center;
         transition: 0.05s background-color ease-out;
@@ -64,5 +65,37 @@
 
     &__operations {
         grid-area: operations;
+    }
+
+    @include bp("sm") {
+        width: max-content;
+
+        &__keys {
+            grid-auto-columns: rem(112);
+        }
+    }
+
+    @include bp("md") {
+        &__keys {
+            grid-auto-columns: rem(128);
+        }
+    }
+
+    @include bp("lg") {
+        &__keys {
+            grid-auto-columns: rem(144);
+        }
+    }
+
+    @include bp("xl") {
+        &__keys {
+            grid-auto-columns: rem(160);
+        }
+    }
+
+    @include bp("2xl") {
+        &__keys {
+            grid-auto-columns: rem(176);
+        }
     }
 }
