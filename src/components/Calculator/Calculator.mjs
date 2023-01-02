@@ -111,7 +111,9 @@ export class Calculator extends HTMLElement {
 
         this.result.innerText = newNumber;
 
-        if (this.memory.operation && this.memory.numbers[1] === "") {
+        if (this.memory.numbers[1] === "") {
+            this.memory.numbers[0] = newNumber;
+        } else {
             this.memory.numbers[1] = newNumber;
         }
     };
@@ -154,8 +156,6 @@ export class Calculator extends HTMLElement {
 
     submit = () => {
         this.vibrate();
-
-        console.log(this.memory);
 
         if (this.memory.operation !== null && this.memory.numbers[1] === "") {
             return;
