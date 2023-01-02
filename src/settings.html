@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="module" src="./main.mjs" defer></script>
-        <title>Document</title>
-    </head>
-    <body id="settings-page">
-        <nav-bar></nav-bar>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./main.mjs" defer></script>
+    <title>Document</title>
+</head>
+<body id="settings-page">
+<nav-bar></nav-bar>
 
-        <custom-container>
-            <h1>This is the test page</h1>
-            <settings-toggle>enableVibrations</settings-toggle>
-            <settings-toggle>showVibrationStatus</settings-toggle>
-            <settings-toggle>enableDarkMode</settings-toggle>
-            <settings-toggle>showNetworkLatency</settings-toggle>
-            <settings-toggle>pingServerAddress</settings-toggle>
-            <settings-toggle>pingRefreshRate</settings-toggle>
-            <settings-toggle>showHour</settings-toggle>
-            <settings-toggle>showMinutes</settings-toggle>
-            <settings-toggle>showSeconds</settings-toggle>
-            <settings-toggle>showYear</settings-toggle>
-            <settings-toggle>showMonth</settings-toggle>
-            <settings-toggle>showDay</settings-toggle>
-            <settings-toggle>showBattery</settings-toggle>
-        </custom-container>
-    </body>
+<custom-container>
+    <h1>Settings</h1>
+    <div>
+        <h2>General</h2>
+        <settings-toggle>showBattery</settings-toggle>
+        <settings-toggle>enableDarkMode</settings-toggle>
+        TODO: Lock setting
+        TODO: Save settings to json file
+    </div>
+    <div>
+        <h2>Date and time</h2>
+        <settings-toggle>showHour</settings-toggle>
+        <settings-toggle>showMinutes</settings-toggle>
+        <settings-toggle>showSeconds</settings-toggle>
+        <settings-toggle>showYear</settings-toggle>
+        <settings-toggle>showMonth</settings-toggle>
+        <settings-toggle>showDay</settings-toggle>
+    </div>
+    <div>
+        <h2>Network</h2>
+        <settings-input type="text">pingServerAddress</settings-input>
+        <settings-input type="number">pingRefreshRate</settings-input>
+        <settings-toggle>showNetworkLatency</settings-toggle>
+    </div>
+    <div>
+        <h2>Vibrations</h2>
+        <settings-toggle>enableVibrations</settings-toggle>
+        <settings-toggle>showVibrationStatus</settings-toggle>
+    </div>
+</custom-container>
+</body>
 </html>
