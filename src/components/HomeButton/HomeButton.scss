@@ -1,0 +1,27 @@
+@use "/scss/abstracts" as *;
+
+.home-button {
+    background-color: transparent;
+    border: none;
+    bottom: 0;
+    cursor: pointer;
+    height: $sz-800;
+    left: 0;
+    margin-bottom: $sz-500;
+    margin-left: $sz-500;
+    position: absolute;
+    transition: 0.125s scale ease-out;
+
+    svg {
+        height: 100%;
+        width: 100%;
+
+        path {
+            fill: $white;
+        }
+    }
+
+    &:hover {
+        scale: 1.125;
+    }
+}
