@@ -56,7 +56,7 @@ export class Calculator extends HTMLElement {
     reset = () => {
         this.vibrate();
 
-        this.memory.numbers[1] = null;
+        this.memory.numbers[1] = "";
         this.result.innerText = "";
     };
 
@@ -77,8 +77,6 @@ export class Calculator extends HTMLElement {
     };
 
     addDigit = (e, isPoint) => {
-        console.log(this.memory);
-
         this.vibrate();
 
         const char = isPoint ? "." : e.target.id;
@@ -157,6 +155,8 @@ export class Calculator extends HTMLElement {
     submit = () => {
         this.vibrate();
 
+        console.log(this.memory);
+
         if (this.memory.operation !== null && this.memory.numbers[1] === "") {
             return;
         }
@@ -182,7 +182,6 @@ export class Calculator extends HTMLElement {
         }
 
         this.memory.numbers[0] = result;
-        this.memory.operation = null;
         this.result.innerText = result;
 
         this.subResult.innerText = `${firstNumber} ${this.getOperationChar(operation)} ${secondNumber}`;
