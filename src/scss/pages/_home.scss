@@ -1,11 +1,11 @@
 @use "/scss/abstracts" as *;
 
-#home-page {
+#home {
     .main {
         display: grid;
-        row-gap: $sz-600;
+        gap: $sz-500;
         grid-template-columns: repeat(4, 1fr);
-        justify-items: space-between;
+        justify-content: space-between;
 
         > * {
             margin-inline: auto;
@@ -13,9 +13,29 @@
         }
     }
 
+    @include bp("sm") {
+        .main {
+            gap: $sz-500;
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
     @include bp("md") {
         .main {
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
+    @include bp("lg") {
+        .main {
+            gap: $sz-600;
+            grid-template-columns: repeat(7, 1fr);
+        }
+    }
+
+    @include bp("xl") {
+        .main {
+            grid-template-columns: repeat(8, 1fr);
         }
     }
 }

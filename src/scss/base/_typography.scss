@@ -4,25 +4,23 @@
 
 body {
     font-family: "Open Sans", sans-serif;
-    font-size: $fs-100;
+    font-size: $fs-300;
     font-weight: $fw-light;
     line-height: 1;
-}
 
-@include bp("sm") {
-    body {
-        font-size: $fs-200;
-    }
-}
-
-@include bp("md") {
-    body {
-        font-size: $fs-300;
-    }
-}
-
-@include bp("lg") {
-    body {
+    @include bp("md") {
         font-size: $fs-400;
+    }
+
+    @include bp("lg") {
+        font-size: $fs-500;
+    }
+
+    @include bp("xl") {
+        font-size: $fs-600;
+    }
+
+    @include bp("2xl") {
+        font-size: $fs-700;
     }
 }
