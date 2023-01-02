@@ -11,6 +11,8 @@ import reception1Icon from "../../icons/reception-1.svg?raw";
 import reception2Icon from "../../icons/reception-2.svg?raw";
 import reception3Icon from "../../icons/reception-3.svg?raw";
 import reception4Icon from "../../icons/reception-4.svg?raw";
+import phone from "../../icons/phone.svg?raw";
+import phoneVibrate from "../../icons/phone-vibrate.svg?raw";
 import Config from "../Settings/Configuration.mjs";
 
 export class NavBar extends HTMLElement {
@@ -26,15 +28,29 @@ export class NavBar extends HTMLElement {
 
         shadow.appendChild(style);
 
-        if (Config.showBattery) {
-            this.battery = shadow.getElementById("battery");
-            this.batteryIcon = shadow.getElementById("battery-icon");
+        this.battery = shadow.getElementById("battery");
+        this.batteryIcon = shadow.getElementById("battery-icon");
+        this.ping = shadow.getElementById("ping");
+        this.pingIcon = shadow.getElementById("ping-icon");
+        this.time = shadow.getElementById("time");
+        this.vibrationStatus = shadow.getElementById("vibration-status");
 
-            // If device has no battery, remove icon
-            if (!navigator.getBattery) {
-                this.batteryIcon.style.display = "none";
-                return;
-            }
+        document.addEventListener("configchange", () => {
+            this.render()
+        })
+
+        this.render()
+    }
+
+    render() {
+        clearInterval(this.pingInterval)
+        clearInterval(this.timeInterval)
+
+        // If device has no battery or if icon is hidden, remove icon
+        if (!navigator.getBattery || !Config.showBattery) {
+            this.batteryIcon.style.display = "none";
+        } else {
+            this.batteryIcon.style.display = "";
 
             navigator.getBattery().then((battery) => {
                 this.updateBatteryIcon(battery);
@@ -50,17 +66,28 @@ export class NavBar extends HTMLElement {
         }
 
         if (Config.showNetworkLatency) {
-            this.ping = shadow.getElementById("ping");
-            this.pingIcon = shadow.getElementById("ping-icon");
-
-            setInterval(this.refreshPing, Config.pingRefreshRate);
+            this.pingIcon.style.display = ""
+            this.ping.style.display = ""
+            this.pingInterval = setInterval(this.refreshPing, Config.pingRefreshRate);
             this.refreshPing();
+        } else {
+            this.pingIcon.style.display = "none"
+            this.ping.style.display = "none"
         }
 
-        this.time = shadow.getElementById("time");
-        this.updateFormatter();
+        if (Config.showVibrationStatus) {
+            this.vibrationStatus.style.display = ""
+            if (Config.enableVibrations) {
+                this.vibrationStatus.innerHTML = phoneVibrate
+            } else {
+                this.vibrationStatus.innerHTML = phone
+            }
+        } else {
+            this.vibrationStatus.style.display = "none"
+        }
 
-        setInterval(this.refreshTime, 1000);
+        this.updateFormatter();
+        this.timeInterval = setInterval(this.refreshTime, 1000);
         this.refreshTime();
     }
 
