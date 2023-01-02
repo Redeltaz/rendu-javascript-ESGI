@@ -1,0 +1,24 @@
+@use "/scss/components" as *;
+
+//body {
+//display: flex;
+//flex-direction: column;
+//min-height: 100vh;
+//}
+
+.clock-container {
+    font-weight: $fw-regular;
+
+    .clock-main-content {
+        #stopwatch-page,
+        #timer-page {
+            display: none;
+        }
+    }
+
+    .clock-menu {
+        .clock-menu-button {
+            cursor: pointer;
+        }
+    }
+}
