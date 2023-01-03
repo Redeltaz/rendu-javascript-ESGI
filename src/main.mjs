@@ -8,6 +8,7 @@ import { NavBar } from "./components/NavBar/NavBar.mjs";
 import { Clock } from "./components/Clock/Clock.mjs";
 import { ClockComponent } from "./components/Clock/ClockComponent/ClockComponent.mjs";
 import { TimerComponent } from "./components/Clock/TimerComponent/TimerComponent.mjs";
+import { StopwatchComponent } from "./components/Clock/StopwatchComponent/StopwatchComponent.mjs";
 
 // Register custom elements here
 customElements.define("custom-element", CustomElement);
@@ -18,3 +19,4 @@ customElements.define("custom-container", Container);
 customElements.define("custom-clock", Clock);
 customElements.define("custom-clock-component", ClockComponent);
 customElements.define("custom-timer-component", TimerComponent);
+customElements.define("custom-stopwatch-component", StopwatchComponent);

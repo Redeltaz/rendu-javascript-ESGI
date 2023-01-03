@@ -1,7 +1,7 @@
 import css from "./TimerComponent.scss";
 import html from "./TimerComponent.html?raw";
 
-export class ClockComponent extends HTMLElement {
+export class TimerComponent extends HTMLElement {
     constructor() {
         super();
 
