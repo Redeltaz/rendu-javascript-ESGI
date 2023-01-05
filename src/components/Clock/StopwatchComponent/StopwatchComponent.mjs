@@ -29,19 +29,22 @@ export class StopwatchComponent extends HTMLElement {
 
         //listeners
         this.startButton.addEventListener("click", () => {
-            if (this.isStarted){
-                this.isPaused ? this.resumeTimer() : this.pauseTimer()
+            if (this.isStarted) {
+                this.isPaused ? this.resumeTimer() : this.pauseTimer();
             } else {
-                this.isStarted = true
-                this.time = 0
-                this.timerLaps.push(0)
-                this.startTimer()
+                this.isStarted = true;
+                this.time = 0;
+                this.timerLaps.push(0);
+                this.startTimer();
             }
         });
 
         this.resetButton.addEventListener("click", () => this.resetTimer());
 
-        this.lapButton.addEventListener("click", () => this.isStarted && this.addLap())
+        this.lapButton.addEventListener(
+            "click",
+            () => this.isStarted && this.addLap()
+        );
     }
 
     addLap() {
@@ -51,7 +54,8 @@ export class StopwatchComponent extends HTMLElement {
         let spanContent = document.createElement("span");
         spanContent.textContent = this.getTime(newLap);
         let spanDiff = document.createElement("span");
-        spanDiff.textContent = "+" + this.getTime(newLap - this.timerLaps.at(-1));
+        spanDiff.textContent =
+            "+" + this.getTime(newLap - this.timerLaps.at(-1));
         let newLapFull = document.createElement("li");
         newLapFull.classList.add("laps");
         newLapFull.appendChild(lapSpan);
@@ -63,44 +67,47 @@ export class StopwatchComponent extends HTMLElement {
 
     getTime = (ms) => {
         const date = new Date(Date.UTC(0, 0, 0, 0, 0, 0, ms));
-        const completeDate = `${String(date.getUTCMinutes()).padStart(2, "0")}:${String(date.getUTCSeconds()).padStart(2, "0")}.${String(date.getUTCMilliseconds() / 10).padStart(2, "0")}`;
+        const completeDate = `${String(date.getUTCMinutes()).padStart(
+            2,
+            "0"
+        )}:${String(date.getUTCSeconds()).padStart(2, "0")}.${String(
+            date.getUTCMilliseconds() / 10
+        ).padStart(2, "0")}`;
 
-        return completeDate
-    }
+        return completeDate;
+    };
 
     startTimer = () => {
         this.timer = setInterval(() => {
             this.timerDisplay.textContent = this.getTime(this.time);
-            this.lapTimer.textContent = this.getTime(this.time - this.timerLaps.at(-1));
+            this.lapTimer.textContent = this.getTime(
+                this.time - this.timerLaps.at(-1)
+            );
             this.time += 10;
         }, 10);
-    }
+    };
 
     pauseTimer = () => {
         this.isPaused = true;
         clearInterval(this.timer);
         this.timer = null;
-    }
+    };
 
     resumeTimer = () => {
         this.isPaused = false;
         this.startTimer();
-    }
+    };
 
     resetTimer() {
-        this.isPaused = false
+        this.isPaused = false;
         if (this.isStarted) {
             this.isStarted = false;
-            clearInterval(this.timer)
+            clearInterval(this.timer);
         }
-        this.time = 0
-        this.timerLaps = []
-        this.lapList.innerHTML = ""
-        this.timerDisplay.textContent = this.getTime(0)
-        this.lapTimer.textContent = this.getTime(0)
+        this.time = 0;
+        this.timerLaps = [];
+        this.lapList.innerHTML = "";
+        this.timerDisplay.textContent = this.getTime(0);
+        this.lapTimer.textContent = this.getTime(0);
     }
-
-
-
-
 }
