@@ -30,45 +30,6 @@ export class Clock extends HTMLElement {
         this.stopwatchPage.style.display = "none";
         this.timerPage.style.display = "none";
 
-        switch (pageName) {
-            case "clock":
-                this.clockPage.style.display = "block";
-                break;
-            case "stopwatch":
-                this.stopwatchPage.style.display = "block";
-                break;
-            case "timer":
-                this.timerPage.style.display = "block";
-                break;
-            default:
-                console.log("erreur");
-        }
-    };
-
-    displayTime = () => {
-        const date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        let dayTime = "AM";
-
-        if (hours == 0) {
-            hours = 12;
-        }
-
-        if (hours > 12) {
-            hours = hours - 12;
-            dayTime = "PM";
-        }
-
-        hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        let time = hours + ":" + minutes + ":" + seconds + " " + dayTime;
-        this.digitalClock.innerText = time;
-        this.digitalClock.textContent = time;
-
-        setTimeout(this.displayTime, 1000);
+        this[`${pageName}Page`].style.display = "block"
     };
 }

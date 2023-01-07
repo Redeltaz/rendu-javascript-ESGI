@@ -14,33 +14,24 @@ export class ClockComponent extends HTMLElement {
         shadow.appendChild(style);
 
         this.digitalClock = shadow.getElementById("clock");
+
         this.displayTime();
     }
 
     displayTime = () => {
-        const date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        let dayTime = "AM";
+        const date = new Intl.DateTimeFormat(navigator.language, {
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+        });
 
-        if (hours == 0) {
-            hours = 12;
-        }
+        let newDate = new Date()
+        this.digitalClock.innerText = date.format(newDate)
 
-        if (hours > 12) {
-            hours = hours - 12;
-            dayTime = "PM";
-        }
-
-        hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        let time = hours + ":" + minutes + ":" + seconds + " " + dayTime;
-        this.digitalClock.innerText = time;
-        this.digitalClock.textContent = time;
-
-        setTimeout(this.displayTime, 1000);
-    };
+        setInterval(() => {
+            newDate = new Date()
+            
+            this.digitalClock.innerText = date.format(newDate)
+        }, 1000)
+    }
 }

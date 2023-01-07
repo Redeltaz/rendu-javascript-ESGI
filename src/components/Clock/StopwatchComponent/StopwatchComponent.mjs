@@ -78,6 +78,8 @@ export class StopwatchComponent extends HTMLElement {
     };
 
     startTimer = () => {
+        this.startButton.textContent = "STOP"
+
         this.timer = setInterval(() => {
             this.timerDisplay.textContent = this.getTime(this.time);
             this.lapTimer.textContent = this.getTime(
@@ -88,6 +90,8 @@ export class StopwatchComponent extends HTMLElement {
     };
 
     pauseTimer = () => {
+        this.startButton.textContent = "START"
+
         this.isPaused = true;
         clearInterval(this.timer);
         this.timer = null;
