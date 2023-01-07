@@ -30,6 +30,6 @@ export class Clock extends HTMLElement {
         this.stopwatchPage.style.display = "none";
         this.timerPage.style.display = "none";
 
-        this[`${pageName}Page`].style.display = "block"
+        this[`${pageName}Page`].style.display = "block";
     };
 }
