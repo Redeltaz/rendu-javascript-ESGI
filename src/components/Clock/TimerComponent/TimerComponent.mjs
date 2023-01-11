@@ -72,12 +72,9 @@ export class TimerComponent extends HTMLElement {
     // Return the total of seconds in HH:MM:SS format
     getTime = (s) => {
         const date = new Date(Date.UTC(0, 0, 0, 0, 0, s, 0));
-        const completeDate = `${String(date.getUTCHours()).padStart(
-            2,
-            "0"
-        )}:${String(date.getUTCMinutes()).padStart(2, "0")}:${String(
-            date.getUTCSeconds()
-        ).padStart(2, "0")}`;
+        const completeDate = `${String(date.getUTCHours()).padStart(2, "0")}:${String(
+            date.getUTCMinutes()
+        ).padStart(2, "0")}:${String(date.getUTCSeconds()).padStart(2, "0")}`;
 
         return completeDate;
     };
