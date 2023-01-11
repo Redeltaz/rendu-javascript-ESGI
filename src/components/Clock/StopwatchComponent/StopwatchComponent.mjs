@@ -48,21 +48,20 @@ export class StopwatchComponent extends HTMLElement {
     }
 
     addLap() {
-        let newLap = this.time;
-        let lapSpan = document.createElement("span");
+        const lapSpan = document.createElement("span");
         lapSpan.textContent = String(this.timerLaps.length).padStart(2, "0");
-        let spanContent = document.createElement("span");
-        spanContent.textContent = this.getTime(newLap);
-        let spanDiff = document.createElement("span");
+        const spanContent = document.createElement("span");
+        spanContent.textContent = this.getTime(this.time);
+        const spanDiff = document.createElement("span");
         spanDiff.textContent =
-            "+" + this.getTime(newLap - this.timerLaps.at(-1));
-        let newLapFull = document.createElement("li");
+            "+" + this.getTime(this.time - this.timerLaps.at(-1));
+        const newLapFull = document.createElement("li");
         newLapFull.classList.add("laps");
         newLapFull.appendChild(lapSpan);
         newLapFull.appendChild(spanContent);
         newLapFull.appendChild(spanDiff);
         this.lapList.prepend(newLapFull);
-        this.timerLaps.push(newLap);
+        this.timerLaps.push(this.time);
     }
 
     getTime = (ms) => {
@@ -78,7 +77,7 @@ export class StopwatchComponent extends HTMLElement {
     };
 
     startTimer = () => {
-        this.startButton.textContent = "STOP"
+        this.startButton.textContent = "STOP";
 
         this.timer = setInterval(() => {
             this.timerDisplay.textContent = this.getTime(this.time);
@@ -90,7 +89,7 @@ export class StopwatchComponent extends HTMLElement {
     };
 
     pauseTimer = () => {
-        this.startButton.textContent = "START"
+        this.startButton.textContent = "START";
 
         this.isPaused = true;
         clearInterval(this.timer);

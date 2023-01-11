@@ -20,17 +20,22 @@ export class TimerComponent extends HTMLElement {
         this.minutesInput = shadow.getElementById("minutes");
         this.secondsInput = shadow.getElementById("seconds");
 
-        this.startButton = shadow.getElementById("start-button");
-        this.stopButton = shadow.getElementById("stop-button");
+        this.isLaunched = false;
+        this.actionButton = shadow.getElementById("action-button");
 
         this.time = 0;
         this.interval = null;
 
-        this.startButton.addEventListener("click", () => this.startTimer());
-        this.stopButton.addEventListener("click", () => this.resetTimer());
+        this.actionButton.addEventListener("click", () => {
+            this.isLaunched ? this.resetTimer() : this.startTimer();
+        });
     }
 
     startTimer = () => {
+        this.isLaunched = true;
+        this.actionButton.textContent = "STOP";
+
+        //Add a 0 before the value if it less than 10
         const hours = parseInt(
             this.hoursInput.value ? this.hoursInput.value : 0
         );
@@ -43,12 +48,10 @@ export class TimerComponent extends HTMLElement {
         this.time = hours * 3600 + minutes * 60 + seconds;
 
         // if countdown equal 0, then don't do anything
-        if (!this.time) return;
+        if (this.time <= 0) return;
 
         this.inputs.style.display = "none";
         this.display.style.display = "block";
-        this.startButton.style.display = "none";
-        this.stopButton.style.display = "block";
 
         let countdown = this.getTime(this.time);
         this.display.textContent = countdown;
@@ -62,7 +65,7 @@ export class TimerComponent extends HTMLElement {
                 this.resetTimer();
             }
 
-            this.time -= 1;
+            this.time--;
         }, 1000);
     };
 
@@ -80,12 +83,13 @@ export class TimerComponent extends HTMLElement {
     };
 
     resetTimer = () => {
+        this.isLaunched = false;
+        this.actionButton.textContent = "START";
+
         clearInterval(this.interval);
         this.time = 0;
 
         this.inputs.style.display = "block";
         this.display.style.display = "none";
-        this.stopButton.style.display = "none";
-        this.startButton.style.display = "block";
     };
 }
