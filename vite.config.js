@@ -14,6 +14,7 @@ export default defineConfig({
                 index: resolve(__dirname, "src/index.html"),
                 settings: resolve(__dirname, "src/settings.html"),
                 calculator: resolve(__dirname, "src/calculator.html"),
+                clock: resolve(__dirname, "src/clock.html"),
             },
         },
     },

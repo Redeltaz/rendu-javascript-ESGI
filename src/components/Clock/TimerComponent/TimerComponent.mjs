@@ -1,5 +1,6 @@
 import css from "./TimerComponent.scss";
 import html from "./TimerComponent.html?raw";
+import audio from "../../../assets/mp3/timer.mp3"
 
 export class TimerComponent extends HTMLElement {
     constructor() {
@@ -12,6 +13,8 @@ export class TimerComponent extends HTMLElement {
         const style = document.createElement("style");
         style.textContent = css;
         shadow.appendChild(style);
+
+        this.audio = audio
 
         this.inputs = shadow.getElementById("inputs");
         this.display = shadow.getElementById("display");
@@ -62,7 +65,7 @@ export class TimerComponent extends HTMLElement {
             this.display.textContent = countdown;
 
             if (this.time === 0) {
-                const audio = new Audio("../../../assets/mp3/timer.mp3");
+                const audio = new Audio(this.audio);
                 audio.play();
 
                 this.resetTimer();
