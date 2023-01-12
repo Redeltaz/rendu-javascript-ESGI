@@ -62,6 +62,9 @@ export class TimerComponent extends HTMLElement {
             this.display.textContent = countdown;
 
             if (this.time === 0) {
+                const audio = new Audio("../../../assets/mp3/timer.mp3");
+                audio.play();
+
                 this.resetTimer();
             }
 
