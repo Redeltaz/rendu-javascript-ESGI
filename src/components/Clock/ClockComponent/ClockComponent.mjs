@@ -25,13 +25,10 @@ export class ClockComponent extends HTMLElement {
             second: "numeric",
         });
 
-        let newDate = new Date();
-        this.digitalClock.innerText = date.format(newDate);
+        this.digitalClock.innerText = date.format(new Date());
 
         setInterval(() => {
-            newDate = new Date();
-
-            this.digitalClock.innerText = date.format(newDate);
+            this.digitalClock.innerText = date.format(new Date());
         }, 1000);
     };
 }

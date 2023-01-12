@@ -37,13 +37,13 @@ export class TimerComponent extends HTMLElement {
 
         //Add a 0 before the value if it less than 10
         const hours = parseInt(
-            this.hoursInput.value ? this.hoursInput.value : 0
+            this.hoursInput.value ?? 0
         );
         const minutes = parseInt(
-            this.minutesInput.value ? this.minutesInput.value : 0
+            this.minutesInput.value ?? 0
         );
         const seconds = parseInt(
-            this.secondsInput.value ? this.secondsInput.value : 0
+            this.secondsInput.value ?? 0
         );
         this.time = hours * 3600 + minutes * 60 + seconds;
 
@@ -70,8 +70,8 @@ export class TimerComponent extends HTMLElement {
     };
 
     // Return the total of seconds in HH:MM:SS format
-    getTime = (s) => {
-        const date = new Date(Date.UTC(0, 0, 0, 0, 0, s, 0));
+    getTime = (seconds) => {
+        const date = new Date(Date.UTC(0, 0, 0, 0, 0, seconds, 0));
         const completeDate = `${String(date.getUTCHours()).padStart(2, "0")}:${String(
             date.getUTCMinutes()
         ).padStart(2, "0")}:${String(date.getUTCSeconds()).padStart(2, "0")}`;
