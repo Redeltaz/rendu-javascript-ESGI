@@ -3,6 +3,7 @@ import html from "./AppIcon.html?raw";
 import calculatorIcon from "../../icons/calculator.svg?raw";
 import gearIcon from "../../icons/gear.svg?raw";
 import clockIcon from "../../icons/clock.svg?raw";
+import tictactoeIcon from "../../icons/tictactoe.svg?raw";
 
 export class AppIcon extends HTMLElement {
     constructor() {
@@ -22,6 +23,7 @@ export class AppIcon extends HTMLElement {
             calculator: calculatorIcon,
             gear: gearIcon,
             clock: clockIcon,
+            tictactoe: tictactoeIcon
         };
 
         const icon = this.getAttribute("icon");
