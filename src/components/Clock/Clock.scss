@@ -1,7 +1,9 @@
 @use "/scss/components" as *;
 
 .clock-container {
+    display: grid;
     font-weight: $fw-regular;
+    gap: $sz-600;
 
     .clock-main-content {
         #stopwatch-page,
@@ -11,13 +13,20 @@
     }
 
     .clock-menu {
+        border-bottom: rem(2) solid $white;
+
         .clock-menu-button {
             border: rem(2) solid $white;
             border-bottom: none;
-            border-radius: $sz-200 $sz-200 0 0;
+            border-radius: $sz-300 $sz-300 0 0;
             color: $white;
             cursor: pointer;
-            padding: $sz-300 $sz-500 $sz-200;
+            padding: $sz-300 $sz-500;
+
+            &.active {
+                background-color: $white;
+                color: $black;
+            }
         }
     }
 }

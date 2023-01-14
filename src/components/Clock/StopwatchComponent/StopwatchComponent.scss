@@ -1,11 +1,19 @@
+@use "/scss/components" as *;
+
 #stopwatch {
+    display: grid;
+    gap: $sz-500;
+
     .stopwatch-container {
-        #lap-list {
-            li {
-                span {
-                    margin-left: 20px;
-                }
-            }
+        color: $white;
+    }
+
+    .stopwatch-control {
+        button {
+            background-color: $white;
+            border-radius: $sz-200;
+            font-size: $fs-600;
+            padding: $sz-300 $sz-500;
         }
     }
 }
