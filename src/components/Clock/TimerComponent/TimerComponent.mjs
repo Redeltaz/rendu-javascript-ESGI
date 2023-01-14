@@ -1,6 +1,6 @@
 import css from "./TimerComponent.scss";
 import html from "./TimerComponent.html?raw";
-import audio from "../../../assets/mp3/timer.mp3"
+import audio from "../../../assets/mp3/timer.mp3";
 
 export class TimerComponent extends HTMLElement {
     constructor() {
@@ -14,7 +14,7 @@ export class TimerComponent extends HTMLElement {
         style.textContent = css;
         shadow.appendChild(style);
 
-        this.audio = audio
+        this.audio = audio;
 
         this.inputs = shadow.getElementById("inputs");
         this.display = shadow.getElementById("display");
@@ -39,15 +39,9 @@ export class TimerComponent extends HTMLElement {
         this.actionButton.textContent = "STOP";
 
         //Add a 0 before the value if it less than 10
-        const hours = parseInt(
-            this.hoursInput.value ?? 0
-        );
-        const minutes = parseInt(
-            this.minutesInput.value ?? 0
-        );
-        const seconds = parseInt(
-            this.secondsInput.value ?? 0
-        );
+        const hours = parseInt(this.hoursInput.value ?? 0);
+        const minutes = parseInt(this.minutesInput.value ?? 0);
+        const seconds = parseInt(this.secondsInput.value ?? 0);
         this.time = hours * 3600 + minutes * 60 + seconds;
 
         // if countdown equal 0, then don't do anything
