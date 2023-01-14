@@ -1,11 +1,5 @@
 @use "/scss/components" as *;
 
-//body {
-//display: flex;
-//flex-direction: column;
-//min-height: 100vh;
-//}
-
 .clock-container {
     font-weight: $fw-regular;
 
@@ -18,7 +12,12 @@
 
     .clock-menu {
         .clock-menu-button {
+            border: rem(2) solid $white;
+            border-bottom: none;
+            border-radius: $sz-200 $sz-200 0 0;
+            color: $white;
             cursor: pointer;
+            padding: $sz-300 $sz-500 $sz-200;
         }
     }
 }
