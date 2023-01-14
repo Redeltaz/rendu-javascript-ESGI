@@ -50,8 +50,7 @@ export class StopwatchComponent extends HTMLElement {
         const spanContent = document.createElement("span");
         spanContent.textContent = this.getTime(this.time);
         const spanDiff = document.createElement("span");
-        spanDiff.textContent =
-            "+" + this.getTime(this.time - this.timerLaps.at(-1));
+        spanDiff.textContent = "+" + this.getTime(this.time - this.timerLaps.at(-1));
         const newLapFull = document.createElement("li");
         newLapFull.classList.add("laps");
         newLapFull.appendChild(lapSpan);
