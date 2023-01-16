@@ -6,9 +6,14 @@
 
     .stopwatch-container {
         color: $white;
+        height: 50vh;
+        margin-inline: auto;
+        overflow-y: auto;
     }
 
     .stopwatch-control {
+        margin-inline: auto;
+
         button {
             background-color: $white;
             border-radius: $sz-200;

@@ -8,11 +8,12 @@
         align-items: center;
         color: $white;
         display: flex;
+        margin-inline: auto;
+        width: fit-content;
 
         input {
             appearance: textfield;
             border-radius: $sz-200;
-            padding-block: $sz-300;
             text-align: center;
             width: 4ch;
 
@@ -31,12 +32,15 @@
     #display {
         color: $white;
         display: none;
+        margin-inline: auto;
+        width: fit-content;
     }
 
     #action-button {
         background-color: $white;
         border-radius: $sz-200;
         font-size: $fs-600;
+        margin-inline: auto;
         padding: $sz-300 $sz-500;
         width: max-content;
     }
