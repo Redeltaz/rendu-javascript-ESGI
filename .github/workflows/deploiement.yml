@@ -1,0 +1,40 @@
+name: Deploiement
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/access_key.pem
+          chmod 600 ~/.ssh/access_key.pem
+          cat >>~/.ssh/config <<END
+          Host prod
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/access_key.pem
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.EC2_USER }}
+          SSH_KEY: ${{ secrets.EC2_KEY_PAIR }}
+          SSH_HOST: ${{ secrets.EC2_IP }}
+
+      - name: Stop the app
+        run: ssh prod "cd rendu-javascript-ESGI && docker-compose down"
+
+      - name: Pull latest changes
+        run: ssh prod "cd rendu-javascript-ESGI && git pull origin main"
+
+      - name: Remove old useless images
+        run: ssh prod "docker image prune -a -f"
+
+      - name: Rebuild image and launch container
+        run: ssh prod "cd rendu-javascript-ESGI && docker-compose up --build -d"
