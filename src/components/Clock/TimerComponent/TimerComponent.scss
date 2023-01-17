@@ -1,6 +1,48 @@
+@use "/scss/components" as *;
+
 #timer {
+    display: grid;
+    gap: $sz-500;
+
+    #inputs {
+        align-items: center;
+        color: $white;
+        display: flex;
+        margin-inline: auto;
+        width: fit-content;
+
+        input {
+            appearance: textfield;
+            border-radius: $sz-200;
+            text-align: center;
+            width: 4ch;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                margin: 0;
+                -webkit-appearance: none;
+            }
+
+            &:focus {
+                outline: rem(3) solid $white;
+            }
+        }
+    }
+
     #display {
+        color: $white;
         display: none;
+        margin-inline: auto;
+        width: fit-content;
+    }
+
+    #action-button {
+        background-color: $white;
+        border-radius: $sz-200;
+        font-size: $fs-600;
+        margin-inline: auto;
+        padding: $sz-300 $sz-500;
+        width: max-content;
     }
 
     #stop-button {

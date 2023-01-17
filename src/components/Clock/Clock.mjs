@@ -21,15 +21,21 @@ export class Clock extends HTMLElement {
 
         this.pageButtons.forEach((button) => {
             const page = button.dataset.argument;
-            button.addEventListener("click", () => this.changePage(page));
+            button.addEventListener("click", () => this.changePage(page, shadow));
         });
     }
 
-    changePage = (pageName) => {
+    changePage = (pageName, shadow) => {
         this.clockPage.style.display = "none";
         this.stopwatchPage.style.display = "none";
         this.timerPage.style.display = "none";
 
         this[`${pageName}Page`].style.display = "block";
+
+        [...shadow.querySelectorAll("[data-argument]")].map((button) => {
+            button.classList.remove("active");
+        });
+
+        shadow.querySelector(`[data-argument='${pageName}']`).classList.add("active");
     };
 }
