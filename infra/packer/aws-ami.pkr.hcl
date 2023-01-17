@@ -8,7 +8,7 @@ packer {
 }
 
 locals {
-  ami_name      = "custom-docker-ami-${formatdate("YYYYMMDDhhmmss", timestamp())}"
+  ami_name      = "rendu-js-ami-${formatdate("YYYYMMDDhhmmss", timestamp())}"
   instance_type = "t3.micro"
   ami_region    = "eu-west-3"
   region        = "eu-west-3"
@@ -19,7 +19,6 @@ source "amazon-ebs" "aws_custom_debian_ami" {
   ami_regions   = [local.ami_region]
   instance_type = local.instance_type
   region        = local.region
-  /*profile       = local.profile*/
   ssh_username  = "admin"
 
   source_ami_filter {
