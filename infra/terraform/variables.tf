@@ -5,7 +5,7 @@ variable "vpc_name" {
 
 variable "instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t2.micro"
 }
 
 variable "vpc_cidr_block" {

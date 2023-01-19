@@ -9,7 +9,7 @@ packer {
 
 locals {
   ami_name      = "rendu-js-ami-${formatdate("YYYYMMDDhhmmss", timestamp())}"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
   ami_region    = "eu-west-3"
   region        = "eu-west-3"
 }
