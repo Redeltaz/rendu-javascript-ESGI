@@ -1,5 +1,5 @@
 import css from "./SettingsToggle.scss";
-import Config from "./Configuration.mjs"
+import Config from "./Configuration.mjs";
 
 export class SettingsInput extends HTMLElement {
     constructor() {
@@ -18,16 +18,16 @@ export class SettingsInput extends HTMLElement {
         this.input = document.createElement("input");
         this.input.value = Config[this.option];
         this.input.addEventListener("change", this.handleChange);
-        this.input.type = this.getAttribute("type")
+        this.input.type = this.getAttribute("type");
         shadow.appendChild(this.input);
     }
 
     handleChange = () => {
-        const currentValue = Config[this.option]
+        const currentValue = Config[this.option];
         if (typeof currentValue === "number" && typeof this.input.value === "string") {
-            Config[this.option] = parseInt(this.input.value)
+            Config[this.option] = parseInt(this.input.value);
         } else if (typeof currentValue !== "boolean") {
-            Config[this.option] = this.input.value
+            Config[this.option] = this.input.value;
         }
     };
 }

@@ -1,6 +1,6 @@
 import css from "./SettingsToggle.scss";
 import html from "./SettingsToggle.html?raw";
-import Config from "./Configuration.mjs"
+import Config from "./Configuration.mjs";
 
 export class SettingsToggle extends HTMLElement {
     constructor() {
@@ -29,9 +29,9 @@ export class SettingsToggle extends HTMLElement {
     }
 
     handleClick = () => {
-        const currentValue = Config[this.option]
+        const currentValue = Config[this.option];
         if (typeof currentValue === "boolean") {
-            Config[this.option] = !currentValue
+            Config[this.option] = !currentValue;
             this.checkbox.checked = !currentValue;
         }
     };

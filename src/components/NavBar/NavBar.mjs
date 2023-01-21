@@ -36,15 +36,15 @@ export class NavBar extends HTMLElement {
         this.vibrationStatus = shadow.getElementById("vibration-status");
 
         document.addEventListener("configchange", () => {
-            this.render()
-        })
+            this.render();
+        });
 
-        this.render()
+        this.render();
     }
 
     render() {
-        clearInterval(this.pingInterval)
-        clearInterval(this.timeInterval)
+        clearInterval(this.pingInterval);
+        clearInterval(this.timeInterval);
 
         // If device has no battery or if icon is hidden, remove icon
         if (!navigator.getBattery || !Config.showBattery) {
@@ -66,24 +66,24 @@ export class NavBar extends HTMLElement {
         }
 
         if (Config.showNetworkLatency) {
-            this.pingIcon.style.display = ""
-            this.ping.style.display = ""
+            this.pingIcon.style.display = "";
+            this.ping.style.display = "";
             this.pingInterval = setInterval(this.refreshPing, Config.pingRefreshRate);
             this.refreshPing();
         } else {
-            this.pingIcon.style.display = "none"
-            this.ping.style.display = "none"
+            this.pingIcon.style.display = "none";
+            this.ping.style.display = "none";
         }
 
         if (Config.showVibrationStatus) {
-            this.vibrationStatus.style.display = ""
+            this.vibrationStatus.style.display = "";
             if (Config.enableVibrations) {
-                this.vibrationStatus.innerHTML = phoneVibrate
+                this.vibrationStatus.innerHTML = phoneVibrate;
             } else {
-                this.vibrationStatus.innerHTML = phone
+                this.vibrationStatus.innerHTML = phone;
             }
         } else {
-            this.vibrationStatus.style.display = "none"
+            this.vibrationStatus.style.display = "none";
         }
 
         this.updateFormatter();
@@ -182,5 +182,5 @@ export class NavBar extends HTMLElement {
         const date = new Date();
 
         this.time.innerText = this.formatter.format(date);
-    }
+    };
 }

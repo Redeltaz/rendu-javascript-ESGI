@@ -11,32 +11,32 @@
 <nav-bar></nav-bar>
 
     <tab-container activeTab="0">
-        <custom-tab title="General">
+        <div class="custom-tab" data-title="General">
             <settings-toggle parameter="showBattery">Show battery</settings-toggle>
             <settings-toggle parameter="enableDarkMode">Enable dark mode</settings-toggle>
             <export-settings>
             <!-- TODO: Lock setting -->
-        </custom-tab>
+        </div>
 
-        <custom-tab title="Date and time">
+        <div class="custom-tab" data-title="Date and time">
             <settings-toggle parameter="showHour">Show hour</settings-toggle>
             <settings-toggle parameter="showMinutes">Show minutes</settings-toggle>
             <settings-toggle parameter="showSeconds">Show seconds</settings-toggle>
             <settings-toggle parameter="showYear">Show year</settings-toggle>
             <settings-toggle parameter="showMonth">Show month</settings-toggle>
             <settings-toggle parameter="showDay">Show day</settings-toggle>
-        </custom-tab>
+        </div>
 
-        <custom-tab title="Network">
+        <div class="custom-tab" data-title="Network">
             <settings-input parameter="pingServerAddress" type="text">Ping server address</settings-input>
             <settings-input parameter="pingRefreshRate" type="number">Ping refresh rate</settings-input>
             <settings-toggle parameter="showNetworkLatency">Show network latency</settings-toggle>
-        </custom-tab>
+        </div>
 
-        <custom-tab title="Vibrations">
+        <div class="custom-tab" data-title="Vibrations">
             <settings-toggle parameter="enableVibrations">Enable vibrations</settings-toggle>
             <settings-toggle parameter="showVibrationStatus">Show vibration status</settings-toggle>
-        </custom-tab>
+        </div>
     </tab-container>
 <home-button></home-button>
 </body>

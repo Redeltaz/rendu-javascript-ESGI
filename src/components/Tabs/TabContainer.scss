@@ -6,10 +6,10 @@
     gap: 1em 1em;
     grid-auto-flow: row;
     grid-template-areas:
-    ". activeTab"
-    ". activeTab"
-    ". activeTab"
-    ". activeTab";
+        ". activeTab"
+        ". activeTab"
+        ". activeTab"
+        ". activeTab";
     background-color: black;
     align-items: center;
 
@@ -22,15 +22,15 @@
         height: fit-content;
     }
 
+    .custom-tab {
+        display: none;
+        color: white;
+    }
+
     .active-tab {
         grid-area: activeTab;
         display: flex;
         flex-direction: column;
         gap: 1em;
-    }
-
-    custom-tab {
-        display: none;
-        color: white;
     }
 }

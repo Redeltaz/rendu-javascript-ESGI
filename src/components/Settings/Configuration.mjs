@@ -15,49 +15,6 @@
  * @property {boolean} showBattery
  */
 
-/**
- * This is a helper function to generate the Config class body.
- */
-export function generateConfigClassBody() {
-    const str = `@property {boolean} enableVibrations
-@property {boolean} showVibrationStatus
-@property {boolean} enableDarkMode
-@property {boolean} showNetworkLatency
-@property {string} pingServerAddress
-@property {number} pingRefreshRate
-@property {boolean} showHour
-@property {boolean} showMinutes
-@property {boolean} showSeconds
-@property {boolean} showYear
-@property {boolean} showMonth
-@property {boolean} showDay
-@property {boolean} showBattery`;
-    const rgx = RegExp(/\{(.*)\} (.*)/gm);
-    const res = Array.from(str.matchAll(rgx)).map(([, type, name]) => `    /**
-     * @returns {${type}}
-     */
-    static get ${name}() {
-        return Config.configuration.${name}
-    }
-
-    /**
-     * @param {${type}} value
-     */
-    static set ${name}(value) {
-        if (typeof value !== "${type}") {
-            throw "Invalid configuration value for '${name}', ${type} expected, got " + typeof value
-        }
-
-        Config.configuration.${name} = value
-        Config.save()
-        
-        const event = new CustomEvent('configchange', { key: "${name}", newValue: value });
-        document.dispatchEvent(event);
-    }
-    `);
-    console.log(res.join("\n"));
-}
-
 export default class Config {
     /**
      * @type {Configuration}
@@ -83,7 +40,8 @@ export default class Config {
      * @type {Configuration}
      * @private
      */
-    static configuration = JSON.parse(localStorage.getItem("configuration") ?? "null") ?? Config.defaultConfiguration;
+    static configuration =
+        JSON.parse(localStorage.getItem("configuration") ?? "null") ?? Config.defaultConfiguration;
 
     static save() {
         localStorage.setItem("configuration", JSON.stringify(Config.configuration));
@@ -132,7 +90,9 @@ export default class Config {
      */
     static set showVibrationStatus(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showVibrationStatus', boolean expected, got " + typeof value;
+            throw (
+                "Invalid configuration value for 'showVibrationStatus', boolean expected, got " + typeof value
+            );
         }
 
         Config.configuration.showVibrationStatus = value;
@@ -176,7 +136,9 @@ export default class Config {
      */
     static set showNetworkLatency(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showNetworkLatency', boolean expected, got " + typeof value;
+            throw (
+                "Invalid configuration value for 'showNetworkLatency', boolean expected, got " + typeof value
+            );
         }
 
         Config.configuration.showNetworkLatency = value;

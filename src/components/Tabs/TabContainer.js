@@ -1,6 +1,5 @@
 import css from "./TabContainer.scss";
 
-
 export class TabContainer extends HTMLElement {
     constructor() {
         super();
@@ -21,14 +20,14 @@ export class TabContainer extends HTMLElement {
         shadow.appendChild(container);
 
         /**
-         * @type {CustomTab[]}
+         * @type {HTMLDivElement[]}
          */
-        this.tabs = Array.from(container.querySelectorAll("custom-tab"));
+        this.tabs = Array.from(container.querySelectorAll(".custom-tab"));
         this.activeTab = this.tabs[0];
 
         for (const tab of this.tabs) {
             const title = document.createElement("button");
-            title.innerText = tab.getAttribute("title");
+            title.innerText = tab.getAttribute("data-title");
             title.classList.add("tab-button");
             title.addEventListener("click", () => {
                 this.activeTab = tab;
@@ -39,7 +38,7 @@ export class TabContainer extends HTMLElement {
 
     /**
      * Gets the currently shown tab.
-     * @returns {CustomTab}
+     * @returns {HTMLDivElement}
      */
     get activeTab() {
         const index = parseInt(this.getAttribute("activeTab"));
@@ -48,7 +47,7 @@ export class TabContainer extends HTMLElement {
 
     /**
      * Sets the currently shown tab.
-     * @param {CustomTab} value
+     * @param {HTMLDivElement} value
      */
     set activeTab(value) {
         this.activeTab.classList.remove("active-tab");
