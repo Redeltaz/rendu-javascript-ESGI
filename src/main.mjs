@@ -12,6 +12,8 @@ import { StopwatchComponent } from "./components/Clock/StopwatchComponent/Stopwa
 import { TimerComponent } from "./components/Clock/TimerComponent/TimerComponent.mjs";
 import { SettingsToggle } from "./components/Settings/SettingsToggle.mjs";
 import { SettingsInput } from "./components/Settings/SettingsInput.mjs";
+import { TabContainer } from "./components/Tabs/TabContainer.js";
+import { ExportSettings } from "./components/Settings/ExportSettings.mjs";
 
 // Register custom elements here
 customElements.define("app-icon", AppIcon);
@@ -26,3 +28,5 @@ customElements.define("custom-timer-component", TimerComponent);
 customElements.define("nav-bar", NavBar);
 customElements.define("settings-toggle", SettingsToggle);
 customElements.define("settings-input", SettingsInput);
+customElements.define("tab-container", TabContainer);
+customElements.define("export-settings", ExportSettings);

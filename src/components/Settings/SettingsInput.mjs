@@ -1,29 +1,25 @@
-import css from "./SettingsToggle.css";
-import html from "./SettingsInput.html?raw";
+import css from "./SettingsToggle.scss";
 import Config from "./Configuration.mjs"
 
 export class SettingsInput extends HTMLElement {
     constructor() {
         super();
 
-        this.option = this.innerHTML;
+        this.option = this.getAttribute("parameter");
 
         // Create a shadow DOM
-        let shadow = this.attachShadow({ mode: "open" });
-        shadow.innerHTML = html;
+        const shadow = this.attachShadow({ mode: "open" });
 
         const style = document.createElement("style");
         style.textContent = css;
 
         shadow.appendChild(style);
 
-        /**
-         * @type {HTMLInputElement}
-         */
-        this.input = shadow.getElementById("click-me");
+        this.input = document.createElement("input");
         this.input.value = Config[this.option];
         this.input.addEventListener("change", this.handleChange);
         this.input.type = this.getAttribute("type")
+        shadow.appendChild(this.input);
     }
 
     handleChange = () => {

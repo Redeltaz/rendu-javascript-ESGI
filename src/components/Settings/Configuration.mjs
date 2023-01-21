@@ -77,7 +77,7 @@ export default class Config {
         showMonth: true,
         showDay: true,
         showBattery: true,
-    }
+    };
 
     /**
      * @type {Configuration}
@@ -90,10 +90,19 @@ export default class Config {
     }
 
     /**
+     * Gets the configuration blob.
+     * @return {Blob}
+     */
+    static get blob() {
+        const json = JSON.stringify(Config.configuration);
+        return new Blob([json], { type: "application/json" });
+    }
+
+    /**
      * @returns {boolean}
      */
     static get enableVibrations() {
-        return Config.configuration.enableVibrations
+        return Config.configuration.enableVibrations;
     }
 
     /**
@@ -101,13 +110,13 @@ export default class Config {
      */
     static set enableVibrations(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'enableVibrations', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'enableVibrations', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.enableVibrations = value
-        Config.save()
+        Config.configuration.enableVibrations = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "enableVibrations", newValue: value });
+        const event = new CustomEvent("configchange", { key: "enableVibrations", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -115,7 +124,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showVibrationStatus() {
-        return Config.configuration.showVibrationStatus
+        return Config.configuration.showVibrationStatus;
     }
 
     /**
@@ -123,13 +132,13 @@ export default class Config {
      */
     static set showVibrationStatus(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showVibrationStatus', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showVibrationStatus', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showVibrationStatus = value
-        Config.save()
+        Config.configuration.showVibrationStatus = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showVibrationStatus", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showVibrationStatus", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -137,7 +146,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get enableDarkMode() {
-        return Config.configuration.enableDarkMode
+        return Config.configuration.enableDarkMode;
     }
 
     /**
@@ -145,13 +154,13 @@ export default class Config {
      */
     static set enableDarkMode(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'enableDarkMode', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'enableDarkMode', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.enableDarkMode = value
-        Config.save()
+        Config.configuration.enableDarkMode = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "enableDarkMode", newValue: value });
+        const event = new CustomEvent("configchange", { key: "enableDarkMode", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -159,7 +168,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showNetworkLatency() {
-        return Config.configuration.showNetworkLatency
+        return Config.configuration.showNetworkLatency;
     }
 
     /**
@@ -167,13 +176,13 @@ export default class Config {
      */
     static set showNetworkLatency(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showNetworkLatency', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showNetworkLatency', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showNetworkLatency = value
-        Config.save()
+        Config.configuration.showNetworkLatency = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showNetworkLatency", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showNetworkLatency", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -181,7 +190,7 @@ export default class Config {
      * @returns {string}
      */
     static get pingServerAddress() {
-        return Config.configuration.pingServerAddress
+        return Config.configuration.pingServerAddress;
     }
 
     /**
@@ -189,13 +198,13 @@ export default class Config {
      */
     static set pingServerAddress(value) {
         if (typeof value !== "string") {
-            throw "Invalid configuration value for 'pingServerAddress', string expected, got " + typeof value
+            throw "Invalid configuration value for 'pingServerAddress', string expected, got " + typeof value;
         }
 
-        Config.configuration.pingServerAddress = value
-        Config.save()
+        Config.configuration.pingServerAddress = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "pingServerAddress", newValue: value });
+        const event = new CustomEvent("configchange", { key: "pingServerAddress", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -203,7 +212,7 @@ export default class Config {
      * @returns {number}
      */
     static get pingRefreshRate() {
-        return Config.configuration.pingRefreshRate
+        return Config.configuration.pingRefreshRate;
     }
 
     /**
@@ -211,13 +220,13 @@ export default class Config {
      */
     static set pingRefreshRate(value) {
         if (typeof value !== "number") {
-            throw "Invalid configuration value for 'pingRefreshRate', number expected, got " + typeof value
+            throw "Invalid configuration value for 'pingRefreshRate', number expected, got " + typeof value;
         }
 
-        Config.configuration.pingRefreshRate = value
-        Config.save()
+        Config.configuration.pingRefreshRate = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "pingRefreshRate", newValue: value });
+        const event = new CustomEvent("configchange", { key: "pingRefreshRate", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -225,7 +234,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showHour() {
-        return Config.configuration.showHour
+        return Config.configuration.showHour;
     }
 
     /**
@@ -233,13 +242,13 @@ export default class Config {
      */
     static set showHour(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showHour', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showHour', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showHour = value
-        Config.save()
+        Config.configuration.showHour = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showHour", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showHour", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -247,7 +256,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showMinutes() {
-        return Config.configuration.showMinutes
+        return Config.configuration.showMinutes;
     }
 
     /**
@@ -255,13 +264,13 @@ export default class Config {
      */
     static set showMinutes(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showMinutes', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showMinutes', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showMinutes = value
-        Config.save()
+        Config.configuration.showMinutes = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showMinutes", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showMinutes", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -269,7 +278,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showSeconds() {
-        return Config.configuration.showSeconds
+        return Config.configuration.showSeconds;
     }
 
     /**
@@ -277,13 +286,13 @@ export default class Config {
      */
     static set showSeconds(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showSeconds', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showSeconds', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showSeconds = value
-        Config.save()
+        Config.configuration.showSeconds = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showSeconds", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showSeconds", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -291,7 +300,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showYear() {
-        return Config.configuration.showYear
+        return Config.configuration.showYear;
     }
 
     /**
@@ -299,13 +308,13 @@ export default class Config {
      */
     static set showYear(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showYear', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showYear', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showYear = value
-        Config.save()
+        Config.configuration.showYear = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showYear", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showYear", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -313,7 +322,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showMonth() {
-        return Config.configuration.showMonth
+        return Config.configuration.showMonth;
     }
 
     /**
@@ -321,13 +330,13 @@ export default class Config {
      */
     static set showMonth(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showMonth', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showMonth', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showMonth = value
-        Config.save()
+        Config.configuration.showMonth = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showMonth", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showMonth", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -335,7 +344,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showDay() {
-        return Config.configuration.showDay
+        return Config.configuration.showDay;
     }
 
     /**
@@ -343,13 +352,13 @@ export default class Config {
      */
     static set showDay(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showDay', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showDay', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showDay = value
-        Config.save()
+        Config.configuration.showDay = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showDay", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showDay", newValue: value });
         document.dispatchEvent(event);
     }
 
@@ -357,7 +366,7 @@ export default class Config {
      * @returns {boolean}
      */
     static get showBattery() {
-        return Config.configuration.showBattery
+        return Config.configuration.showBattery;
     }
 
     /**
@@ -365,13 +374,13 @@ export default class Config {
      */
     static set showBattery(value) {
         if (typeof value !== "boolean") {
-            throw "Invalid configuration value for 'showBattery', boolean expected, got " + typeof value
+            throw "Invalid configuration value for 'showBattery', boolean expected, got " + typeof value;
         }
 
-        Config.configuration.showBattery = value
-        Config.save()
+        Config.configuration.showBattery = value;
+        Config.save();
 
-        const event = new CustomEvent('configchange', { key: "showBattery", newValue: value });
+        const event = new CustomEvent("configchange", { key: "showBattery", newValue: value });
         document.dispatchEvent(event);
     }
 }

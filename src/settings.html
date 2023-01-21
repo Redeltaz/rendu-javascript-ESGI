@@ -10,35 +10,34 @@
 <body id="settings-page">
 <nav-bar></nav-bar>
 
-<custom-container>
-    <h1>Settings</h1>
-    <div>
-        <h2>General</h2>
-        <settings-toggle>showBattery</settings-toggle>
-        <settings-toggle>enableDarkMode</settings-toggle>
-        TODO: Lock setting
-        TODO: Save settings to json file
-    </div>
-    <div>
-        <h2>Date and time</h2>
-        <settings-toggle>showHour</settings-toggle>
-        <settings-toggle>showMinutes</settings-toggle>
-        <settings-toggle>showSeconds</settings-toggle>
-        <settings-toggle>showYear</settings-toggle>
-        <settings-toggle>showMonth</settings-toggle>
-        <settings-toggle>showDay</settings-toggle>
-    </div>
-    <div>
-        <h2>Network</h2>
-        <settings-input type="text">pingServerAddress</settings-input>
-        <settings-input type="number">pingRefreshRate</settings-input>
-        <settings-toggle>showNetworkLatency</settings-toggle>
-    </div>
-    <div>
-        <h2>Vibrations</h2>
-        <settings-toggle>enableVibrations</settings-toggle>
-        <settings-toggle>showVibrationStatus</settings-toggle>
-    </div>
-</custom-container>
+    <tab-container activeTab="0">
+        <custom-tab title="General">
+            <settings-toggle parameter="showBattery">Show battery</settings-toggle>
+            <settings-toggle parameter="enableDarkMode">Enable dark mode</settings-toggle>
+            <export-settings>
+            <!-- TODO: Lock setting -->
+        </custom-tab>
+
+        <custom-tab title="Date and time">
+            <settings-toggle parameter="showHour">Show hour</settings-toggle>
+            <settings-toggle parameter="showMinutes">Show minutes</settings-toggle>
+            <settings-toggle parameter="showSeconds">Show seconds</settings-toggle>
+            <settings-toggle parameter="showYear">Show year</settings-toggle>
+            <settings-toggle parameter="showMonth">Show month</settings-toggle>
+            <settings-toggle parameter="showDay">Show day</settings-toggle>
+        </custom-tab>
+
+        <custom-tab title="Network">
+            <settings-input parameter="pingServerAddress" type="text">Ping server address</settings-input>
+            <settings-input parameter="pingRefreshRate" type="number">Ping refresh rate</settings-input>
+            <settings-toggle parameter="showNetworkLatency">Show network latency</settings-toggle>
+        </custom-tab>
+
+        <custom-tab title="Vibrations">
+            <settings-toggle parameter="enableVibrations">Enable vibrations</settings-toggle>
+            <settings-toggle parameter="showVibrationStatus">Show vibration status</settings-toggle>
+        </custom-tab>
+    </tab-container>
+<home-button></home-button>
 </body>
 </html>

@@ -9,7 +9,7 @@ export class AppIcon extends HTMLElement {
         super();
 
         // Create a shadow DOM
-        let shadow = this.attachShadow({ mode: "open" });
+        const shadow = this.attachShadow({ mode: "open" });
         shadow.innerHTML = html;
 
         // Import style
