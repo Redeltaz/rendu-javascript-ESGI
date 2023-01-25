@@ -23,7 +23,7 @@ export class AppIcon extends HTMLElement {
             calculator: calculatorIcon,
             gear: gearIcon,
             clock: clockIcon,
-            tictactoe: tictactoeIcon
+            tictactoe: tictactoeIcon,
         };
 
         const icon = this.getAttribute("icon");

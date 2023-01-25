@@ -3,6 +3,11 @@
 .tictactoe-container {
     font-weight: $fw-regular;
 
+    #reset {
+        background-color: white;
+        cursor: pointer;
+    }
+
     #game {
         padding: 10px;
         margin: 0 auto;
@@ -19,7 +24,7 @@
                 height: 100px;
                 font-size: 50px;
                 margin: 5px;
-                float:left;
+                float: left;
                 text-align: center;
             }
         }
