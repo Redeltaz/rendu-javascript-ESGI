@@ -16,16 +16,12 @@ export class TicTacToe extends HTMLElement {
         this.xWinsText = shadow.getElementById("x-win-local");
         this.oWinsText = shadow.getElementById("o-win-local");
 
-        let storedResults = JSON.parse(localStorage.getItem("results"));
+        let storedResults = JSON.parse(localStorage.getItem("results")) || {
+            X: 0,
+            O: 0
+        };
 
-        // Init default scores if it's the first time
-        if (!storedResults) {
-            storedResults = {
-                X: 0,
-                O: 0,
-            };
-            localStorage.setItem("results", JSON.stringify(storedResults));
-        }
+        localStorage.setItem("results", JSON.stringify(storedResults));
 
         this.updateLocalTextResults(storedResults);
 
@@ -46,9 +42,9 @@ export class TicTacToe extends HTMLElement {
         ];
 
         this.result.textContent = "X player turn";
-        this.buttons.forEach((button) => {
+        for (let button of this.buttons) {
             button.addEventListener("click", this.newTurn);
-        });
+        }
         resetButton.addEventListener("click", this.resetGame);
     }
 
@@ -67,9 +63,9 @@ export class TicTacToe extends HTMLElement {
             this.updateLocalResults(player);
 
             // Disable possibility to continue playing if someone won
-            this.buttons.forEach((button) => {
+            for (let button of this.buttons) {
                 button.removeEventListener("click", this.newTurn);
-            });
+            }
         } else if (!this.remainingTurn) {
             this.result.textContent = "It's a draw !";
         } else {
@@ -90,14 +86,14 @@ export class TicTacToe extends HTMLElement {
 
     updateLocalResults = (player) => {
         const results = JSON.parse(localStorage.getItem("results"));
-        results[`${player}`]++;
+        results[player]++;
         localStorage.setItem("results", JSON.stringify(results));
         this.updateLocalTextResults(results);
     };
 
     updateLocalTextResults = (results) => {
-        this.xWinsText.textContent = results["X"];
-        this.oWinsText.textContent = results["O"];
+        this.xWinsText.textContent = `X won ${results.X} times !`;
+        this.oWinsText.textContent = `O won ${results.O} times !`;
     };
 
     resetGame = () => {
