@@ -103,5 +103,6 @@ export class StopwatchComponent extends HTMLElement {
         this.lapList.innerHTML = "";
         this.timerDisplay.textContent = this.getTime(0);
         this.lapTimer.textContent = this.getTime(0);
+        this.startButton.textContent = "START";
     }
 }
