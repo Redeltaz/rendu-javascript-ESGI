@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="module" src="./main.mjs" defer></script>
-        <title>Document</title>
-    </head>
-    <body id="settings-page">
-        <custom-container>
-            <nav-bar></nav-bar>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./main.mjs" defer></script>
+    <title>Document</title>
+</head>
+<body id="settings-page">
+<nav-bar></nav-bar>
 
-            <h1>This is the test page</h1>
-            <custom-element app="/">Home</custom-element>
-        </custom-container>
-    </body>
+    <tab-container activeTab="0">
+        <div class="custom-tab" data-title="General">
+            <settings-toggle parameter="showBattery">Show battery</settings-toggle>
+            <settings-toggle parameter="enableDarkMode">Enable dark mode</settings-toggle>
+            <export-settings>
+            <!-- TODO: Lock setting -->
+        </div>
+
+        <div class="custom-tab" data-title="Date and time">
+            <settings-toggle parameter="showHour">Show hour</settings-toggle>
+            <settings-toggle parameter="showMinutes">Show minutes</settings-toggle>
+            <settings-toggle parameter="showSeconds">Show seconds</settings-toggle>
+            <settings-toggle parameter="showYear">Show year</settings-toggle>
+            <settings-toggle parameter="showMonth">Show month</settings-toggle>
+            <settings-toggle parameter="showDay">Show day</settings-toggle>
+        </div>
+
+        <div class="custom-tab" data-title="Network">
+            <settings-input parameter="pingServerAddress" type="text">Ping server address</settings-input>
+            <settings-input parameter="pingRefreshRate" type="number">Ping refresh rate</settings-input>
+            <settings-toggle parameter="showNetworkLatency">Show network latency</settings-toggle>
+        </div>
+
+        <div class="custom-tab" data-title="Vibrations">
+            <settings-toggle parameter="enableVibrations">Enable vibrations</settings-toggle>
+            <settings-toggle parameter="showVibrationStatus">Show vibration status</settings-toggle>
+        </div>
+    </tab-container>
+<home-button></home-button>
+</body>
 </html>
