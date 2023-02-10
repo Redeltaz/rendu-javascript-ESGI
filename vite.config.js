@@ -15,6 +15,7 @@ export default defineConfig({
                 settings: resolve(__dirname, "src/settings.html"),
                 calculator: resolve(__dirname, "src/calculator.html"),
                 clock: resolve(__dirname, "src/clock.html"),
+                tictactoe: resolve(__dirname, "src/tictactoe.html"),
             },
         },
     },
