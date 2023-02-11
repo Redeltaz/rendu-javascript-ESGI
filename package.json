@@ -9,6 +9,7 @@
         "lint": "eslint ./src",
         "format": "prettier --write ./src",
         "build": "vite build",
+        "preview": "vite preview",
         "dev": "vite"
     },
     "author": "",
