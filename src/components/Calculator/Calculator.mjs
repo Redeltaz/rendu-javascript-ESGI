@@ -16,7 +16,7 @@ export class Calculator extends HTMLElement {
 
         // Get elements
         this.result = shadow.getElementById("result");
-        this.subResult = shadow.getElementById("sub-result");
+        this.input = shadow.getElementById("input");
         this.resetButton = shadow.getElementById("reset");
         this.resetAllButton = shadow.getElementById("reset-all");
         this.backButton = shadow.getElementById("back");
@@ -38,32 +38,27 @@ export class Calculator extends HTMLElement {
         }
 
         // Add event listeners
-        this.resetButton.addEventListener("click", this.reset);
-        this.resetAllButton.addEventListener("click", this.resetAll);
-        this.sign.addEventListener("click", this.changeSign);
         this.point.addEventListener("click", (e) => this.addDigit(e, true));
-        this.plusButton.addEventListener("click", () => this.operate("add"));
-        this.equalsButton.addEventListener("click", this.submit);
+
+        this.resetAllButton.addEventListener("click", this.resetAll);
+
+        this.sign.addEventListener("click", this.changeSign);
 
         this.divideButton.addEventListener("click", () => this.operate("divide"));
-        this.multiplyButton.addEventListener("click", () => this.operate("multiply"));
         this.minusButton.addEventListener("click", () => this.operate("substract"));
+        this.multiplyButton.addEventListener("click", () => this.operate("multiply"));
+        this.plusButton.addEventListener("click", () => this.operate("add"));
+
+        this.equalsButton.addEventListener("click", this.submit);
 
         // Initialize
         this.resetAll();
     }
 
-    reset = () => {
-        this.vibrate();
-
-        this.memory.numbers[1] = "";
-        this.result.innerText = "";
-    };
-
     resetMemory = () => {
         this.memory = {
-            numbers: ["", ""],
-            operation: null,
+            numbers: [],
+            operations: [],
         };
     };
 
@@ -71,7 +66,7 @@ export class Calculator extends HTMLElement {
         this.vibrate();
 
         this.result.innerText = "";
-        this.subResult.innerText = "";
+        this.input.innerText = "";
 
         this.resetMemory();
     };
@@ -80,111 +75,94 @@ export class Calculator extends HTMLElement {
         this.vibrate();
 
         const char = isPoint ? "." : e.target.id;
-        const isAction = e.target.id === "reset" || e.target.id === "reset-all" || e.target.id === "back";
 
-        // Do nothing
-        if ((isPoint && this.result.innerText.includes(".")) || isAction) {
-            return;
+        // Add first digit if memory is empty
+        if (this.memory.numbers.length === 0) {
+            this.memory.numbers.push("");
         }
 
-        // Replace result if an operator has just been clicked
-        if (this.memory.operation && this.memory.numbers[1] === "") {
-            this.result.innerText = char;
-        } else {
-            this.result.innerText += char;
+        // Add new digit if there is an operation
+        if (this.memory.operations.length === this.memory.numbers.length) {
+            this.memory.numbers.push("");
         }
 
-        // Add number in memory if an operation is in progress
-        if (this.memory.operation) {
-            this.memory.numbers[1] += char;
+        // Add digit
+        this.memory.numbers[this.memory.numbers.length - 1] += char;
+
+        // Hide result if not empty
+        if (this.result.innerText !== "") {
+            this.result.innerText = "";
+        }
+
+        // Show digit
+        this.input.innerText += char;
+
+        // Show result
+        if (this.memory.numbers.length >= 2) {
+            this.result.innerText = this.getResult();
         }
     };
 
     changeSign = () => {
         this.vibrate();
 
-        if (this.result.innerText === "") {
+        if (this.memory.numbers.length !== 0 || this.memory.operations.length !== 0) {
             return;
         }
 
-        const newNumber = parseFloat(this.result.innerText) * -1;
-
-        this.result.innerText = newNumber;
-
-        if (this.memory.numbers[1] === "") {
-            this.memory.numbers[0] = newNumber;
-        } else {
-            this.memory.numbers[1] = newNumber;
-        }
+        this.result.innerText = parseFloat(this.result.innerText) * -1;
     };
 
     operate = (operation) => {
         this.vibrate();
 
-        if (this.result.innerText === "") {
-            return;
-        }
-
-        if (this.memory.operation !== null) {
-            this.submit();
-        }
-
-        // Set operation numbers
-        this.memory.numbers[0] = this.result.innerText;
-        this.memory.numbers[1] = "";
-
         // Set operation type
-        this.memory.operation = operation;
+        this.memory.operations.push(operation);
 
-        // Set sub result text
-        this.subResult.innerText = `${this.result.innerText} ${this.getOperationChar(operation)}`;
-
-        // Set result text
-        this.result.innerText = "";
+        // Add operation character
+        this.input.innerText += this.getOperationChar(operation);
     };
 
     getOperationChar = (operation) => {
         const chars = {
+            add: "+",
             divide: "/",
             multiply: "x",
             substract: "-",
-            add: "+",
         };
 
         return chars[operation];
     };
 
+    getResult = () => {
+        const numbers = this.memory.numbers;
+        const operations = this.memory.operations;
+        let result = parseFloat(this.memory.numbers[0]);
+
+        for (let i = 0; i < operations.length; i++) {
+            if (operations[i] === "add") {
+                result += parseFloat(numbers[i + 1]);
+            } else if (operations[i] === "divide") {
+                result /= parseFloat(numbers[i + 1]);
+            } else if (operations[i] === "multiply") {
+                result *= parseFloat(numbers[i + 1]);
+            } else if (operations[i] === "substract") {
+                result -= parseFloat(numbers[i + 1]);
+            }
+        }
+
+        return result;
+    };
+
     submit = () => {
         this.vibrate();
 
-        if (this.memory.operation !== null && this.memory.numbers[1] === "") {
+        if (this.memory.numbers[1] === "") {
             return;
         }
 
-        const firstNumber = parseFloat(this.memory.numbers[0]);
-        const secondNumber = parseFloat(this.memory.numbers[1]);
-        const operation = this.memory.operation;
-
-        if (!operation) {
-            return;
-        }
-
-        let result = null;
-
-        if (operation === "divide") {
-            result = firstNumber / secondNumber;
-        } else if (operation === "multiply") {
-            result = firstNumber * secondNumber;
-        } else if (operation === "substract") {
-            result = firstNumber - secondNumber;
-        } else if (operation === "add") {
-            result = firstNumber + secondNumber;
-        }
-
-        this.memory.numbers[0] = result;
-        this.result.innerText = result;
-
-        this.subResult.innerText = `${firstNumber} ${this.getOperationChar(operation)} ${secondNumber}`;
+        this.resetMemory();
+        this.input.innerText = "";
     };
 
     vibrate = () => {

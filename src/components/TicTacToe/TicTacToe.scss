@@ -1,32 +1,46 @@
 @use "/scss/components" as *;
 
 .tictactoe-container {
+    display: grid;
     font-weight: $fw-regular;
+    gap: $sz-600;
+    justify-content: center;
+    text-align: center;
 
-    #reset {
-        background-color: white;
-        cursor: pointer;
+    #local-results {
+        color: $white;
+        display: flex;
+        gap: $sz-900;
     }
 
     #game {
-        padding: 10px;
-        margin: 0 auto;
+        display: grid;
+        gap: $sz-200;
+        grid-template-columns: repeat(3, min-content);
+        margin-inline: auto;
 
-        div {
-            margin: 0 auto;
-            overflow: hidden;
-
-            button {
-                user-select: none;
-                cursor: pointer;
-                background-color: white;
-                width: 100px;
-                height: 100px;
-                font-size: 50px;
-                margin: 5px;
-                float: left;
-                text-align: center;
-            }
+        button {
+            aspect-ratio: 1;
+            user-select: none;
+            cursor: pointer;
+            background-color: $white;
+            height: $sz-900;
+            font-size: $fs-900;
+            text-align: center;
+            border-radius: $sz-200;
         }
+    }
+
+    #result {
+        color: $white;
+    }
+
+    #reset {
+        background-color: $white;
+        border-radius: $sz-200;
+        cursor: pointer;
+        margin-inline: auto;
+        padding: $sz-200 $sz-300;
+        width: max-content;
     }
 }
