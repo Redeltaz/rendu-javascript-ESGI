@@ -167,7 +167,7 @@ export class Calculator extends HTMLElement {
     submit = () => {
         this.vibrate();
 
-        if (this.memory.numbers[1] === "") {
+        if (this.memory.numbers.length < 2 || this.memory.numbers.length <= this.memory.operations.length) {
             return;
         }
 
