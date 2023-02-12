@@ -116,6 +116,16 @@ export class Calculator extends HTMLElement {
     operate = (operation) => {
         this.vibrate();
 
+        // Check if memory is empty
+        if (this.memory.numbers.length < 1) {
+            if (this.result.innerText === "") {
+                return;
+            } else {
+                this.memory.numbers.push(this.result.innerText);
+                this.input.innerText = this.result.innerText;
+            }
+        }
+
         // Set operation type
         this.memory.operations.push(operation);
 
