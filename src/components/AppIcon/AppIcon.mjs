@@ -4,6 +4,8 @@ import calculatorIcon from "../../icons/calculator.svg?raw";
 import gearIcon from "../../icons/gear.svg?raw";
 import clockIcon from "../../icons/clock.svg?raw";
 import tictactoeIcon from "../../icons/tictactoe.svg?raw";
+import github from "../../icons/github.svg?raw";
+import figma from "../../icons/figma.svg?raw";
 
 export class AppIcon extends HTMLElement {
     constructor() {
@@ -24,6 +26,8 @@ export class AppIcon extends HTMLElement {
             gear: gearIcon,
             clock: clockIcon,
             tictactoe: tictactoeIcon,
+            github: github,
+            figma: figma,
         };
 
         const icon = this.getAttribute("icon");

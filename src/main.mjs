@@ -15,6 +15,7 @@ import { SettingsInput } from "./components/Settings/SettingsInput.mjs";
 import { TabContainer } from "./components/Tabs/TabContainer.js";
 import { ExportSettings } from "./components/Settings/ExportSettings.mjs";
 import { TicTacToe } from "./components/TicTacToe/TicTacToe.mjs";
+import { registerServiceWorker } from "./registerServiceWorker.mjs";
 
 // Register custom elements here
 customElements.define("app-icon", AppIcon);
@@ -32,3 +33,5 @@ customElements.define("settings-input", SettingsInput);
 customElements.define("tab-container", TabContainer);
 customElements.define("export-settings", ExportSettings);
 customElements.define("custom-tictactoe", TicTacToe);
+
+registerServiceWorker();
