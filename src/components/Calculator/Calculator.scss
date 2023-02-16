@@ -3,7 +3,7 @@
 .calculator {
     display: grid;
     font-weight: $fw-regular;
-    gap: $sz-400;
+    gap: $sz-300;
     margin-inline: auto;
 
     &__display {
@@ -20,7 +20,7 @@
 
     &__keys {
         display: grid;
-        gap: $sz-400;
+        gap: $sz-300;
         grid-auto-columns: 1fr;
         grid-template-areas:
             "actions actions actions operations"
@@ -32,20 +32,28 @@
 
         > * {
             display: grid;
-            gap: $sz-400;
+            gap: $sz-300;
         }
     }
 
     &__key {
         align-items: center;
         background-color: $white;
-        border-radius: $sz-400;
+        border-radius: $sz-200;
         aspect-ratio: 1.5;
         display: flex;
         justify-content: center;
         transition: 0.05s background-color ease-out;
 
-        &:hover {
+        &.disabled {
+            background-color: $neutral-200;
+
+            &:hover {
+                cursor: not-allowed;
+            }
+        }
+
+        &:hover:not(.disabled) {
             background-color: $neutral-100;
             cursor: pointer;
             transition: none;

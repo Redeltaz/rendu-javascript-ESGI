@@ -1,11 +1,13 @@
+@use "/scss/abstracts" as *;
+
 .container {
-    background-color: #373535;
-    border-radius: 10px;
-    padding: 20px 5px;
-    font-size: 20px;
+    background-color: $neutral-900;
+    border-radius: $sz-300;
+    padding: $sz-500;
+    font-size: $fs-400;
     font-weight: bold;
 
     #toggle {
-        background-color: #373535;
+        background-color: $neutral-900;
     }
 }

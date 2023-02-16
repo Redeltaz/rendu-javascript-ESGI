@@ -1,36 +1,42 @@
+@use "/scss/abstracts" as *;
+
 .container {
+    align-items: center;
+    background-color: $black;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-auto-rows: 1fr;
-    gap: 1em 1em;
-    grid-auto-flow: row;
+    flex-grow: 1;
+    gap: $sz-500;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
         ". activeTab"
         ". activeTab"
         ". activeTab"
         ". activeTab";
-    background-color: black;
-    align-items: center;
+    padding: $sz-900;
 
     .tab-button {
-        background-color: white;
-        border-radius: 1em;
+        background-color: $neutral-900;
         border: none;
-        padding: 1em;
+        border-radius: $sz-300;
         cursor: pointer;
+        color: $white;
+        font-size: $fs-300;
+        font-weight: bold;
         height: fit-content;
+        padding: $sz-500;
+        text-align: left;
     }
 
     .custom-tab {
         display: none;
-        color: white;
+        color: $white;
     }
 
     .active-tab {
-        grid-area: activeTab;
         display: flex;
         flex-direction: column;
-        gap: 1em;
+        gap: $sz-500;
+        grid-area: activeTab;
     }
 }

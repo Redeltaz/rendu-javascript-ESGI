@@ -34,6 +34,10 @@ export class TabContainer extends HTMLElement {
             });
             container.prepend(title);
         }
+
+        // Add style to component
+        this.style.display = "flex";
+        this.style.flexGrow = "1";
     }
 
     /**
